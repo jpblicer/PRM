@@ -75,3 +75,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+
+# Heroku Fix Ubuntu
+gem "ffi", "< 1.17.0"
