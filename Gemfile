@@ -79,3 +79,8 @@ end
 
 # Heroku Fix Ubuntu
 gem "ffi", "< 1.17.0"
+
+
+# user added gems
+
+gem "faker"
