@@ -9,7 +9,7 @@ class CreateContacts < ActiveRecord::Migration[7.1]
       t.date :birthday
       t.boolean :archive
       t.string :linkedin
-      t.references :company, null: false, foreign_key: true
+      t.references :company, foreign_key: true
       t.references :user, null: false, foreign_key: true
 
       t.timestamps

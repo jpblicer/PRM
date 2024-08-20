@@ -1,5 +1,4 @@
 class Note < ApplicationRecord
-  belongs_to :company
-  belongs_to :contact
+  belongs_to :noteable, polymorphic: true, optional: true
   belongs_to :user
 end
