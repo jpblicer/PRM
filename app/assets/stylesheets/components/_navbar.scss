@@ -1,17 +1,25 @@
 .navigation {
   width: 100vw;
   position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: space-between;
   padding: 2rem 1.5rem;
   font-size: 2.5rem;
   border-bottom: 1.5px solid #dee2e6;
-
-
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
 
   .navigation-item :nth-child(1), .navigation-item :nth-child(3) {
     padding: 1rem;
-    background-color: #dee2e6;
     border-radius: 1rem;
+    transition: all 0.3s;
+  }
+
+  .navigation-item :nth-child(1):hover, .navigation-item :nth-child(3):hover {
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: #dee2e6;
   }
 }
