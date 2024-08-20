@@ -1,0 +1,31 @@
+class ContactsController < ApplicationController
+  def index
+    @contacts = Contact.all
+  end
+
+  def show
+    @contact = Contact.find(params[:id])
+  end
+
+  def new
+    @contact = Contact.new
+  end
+
+  def create
+    @contact = Contact.new(contact_params)
+    @contact.user = current_user
+    if @contact.save
+      raise
+      redirect_to contact_path(@contact)
+    else
+      raise
+      render 'new', status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def contact_params
+    params.require(:contact).permit(:first_name, :last_name, :job_title, :phone, :address, :birthday, :linkedin, :email, :country)
+  end
+end
