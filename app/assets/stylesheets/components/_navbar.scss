@@ -4,22 +4,91 @@
   top: 0;
   left: 0;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  padding: 2rem 1.5rem;
+  padding: 20px 15px;
   font-size: 2.5rem;
   border-bottom: 1.5px solid #dee2e6;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 10;
 
-  .navigation-item :nth-child(1), .navigation-item :nth-child(3) {
-    padding: 1rem;
-    border-radius: 1rem;
-    transition: all 0.3s;
+  .navigation-item {
+    &:nth-child(1),
+    &:nth-child(3) {
+      a {
+        padding: 10px;
+        border-radius: 10px;
+        color: #000;
+        &:hover {
+          background-color: #dee2e6;
+        }
+      }
+    }
+
+    &:nth-child(1) {
+      a {
+        i {
+          transition: transform 0.3s ease-in-out;
+        }
+
+        &:hover i {
+          transform: rotate(45deg);
+        }
+      }
+    }
   }
 
-  .navigation-item :nth-child(1):hover, .navigation-item :nth-child(3):hover {
-    padding: 1rem;
-    border-radius: 1rem;
-    background-color: #dee2e6;
+  .rotate-icon {
+    transform: rotate(45deg);
+    transition: transform 0.3s ease-in-out;
+  }
+
+}
+
+.add-menu {
+  width: 100vw;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  gap: 30px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease-in-out;
+
+  &.show {
+    visibility: visible;
+    max-height: 1000px;
+    transition: max-height .3s ease-in-out;
+  }
+
+  .add-menu-item {
+    a {
+      position: relative;
+      display: inline-block;
+      padding: 5px 0;
+      color: #333;
+      text-decoration: none;
+      font-size: 30px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background-color: #333;
+        transition: width 0.3s ease, left 0.3s ease;
+        transform: translateX(-50%);
+      }
+
+      &:hover::after {
+        width: 100%;
+        left: 0;
+        transform: translateX(0);
+      }
+    }
   }
 }
