@@ -2,19 +2,22 @@
   <h1>Contacts#show</h1>
   <h1>Contact Details</h1>
   <div>
+    <div class="avatar-large">
+      <%= image_tag @contact.avatar, alt:"contact-avatar", :class => "avatar-large" %>
+    </div>
     <div>
       <h2><%= @contact.first_name if @contact.first_name %> <%= @contact.last_name if @contact.last_name %></h2>
       <p><%= @contact.job_title if @contact.job_title %></p>
     </div>
     <div>
       <% if @contact.linkedin != "" %>
-        <a href="<% @contact.linkedin %>" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="<% @contact.linkedin %>" target="_blank"><i class="fa-brands fa-linkedin-in link-dark"></i></a>
       <% end %>
       <% if @contact.email != "" %>
-        <a href="mailto:<% @contact.email %>"><i class="fa-regular fa-envelope"></i></a>
+        <a href="mailto:<% @contact.email %>"><i class="fa-regular fa-envelope link-dark"></i></a>
       <% end %>
       <% if @contact.phone != "" %>
-        <a href="tel:<% @contact.phone %>"><i class="fa-solid fa-phone"></i></a>
+        <a href="tel:<% @contact.phone %>"><i class="fa-solid fa-phone link-dark"></i></a>
       <% end %>
     </div>
   </div>
