@@ -14,7 +14,6 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     @contact.user = current_user
-    raise
     if @contact.save
       redirect_to contact_path(@contact)
     else
