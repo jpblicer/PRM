@@ -3,6 +3,10 @@ class TodosController < ApplicationController
     @todo = Todo.new
   end
 
+  def show
+    @todo = Todo.find(params[:id])
+  end
+
   def create
     @todo = Todo.new(todo_params)
     @todo.user = current_user
