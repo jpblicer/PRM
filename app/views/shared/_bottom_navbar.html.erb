@@ -1,7 +1,22 @@
 <div class="bottom-navigation">
-  <div class="bottom-navigation-item"><i class="fa-regular fa-user"></i></div>
-  <div class="bottom-navigation-item"><i class="fa-regular fa-building"></i></div>
-  <div class="bottom-navigation-item"><i class="fa-solid fa-house"></i></div>
-  <div class="bottom-navigation-item"><i class="fa-regular fa-square-check"></i></div>
-  <div class="bottom-navigation-item"><i class="fa-regular fa-calendar"></i></div>
+
+  <%= link_to contacts_path, class: "bottom-navigation-item" do %>
+    <i class="fa-regular fa-user link-dark"></i>
+  <% end %>
+
+  <%= link_to companies_path, class: "bottom-navigation-item" do %>
+    <i class="fa-regular fa-building link-dark"></i>
+  <% end %>
+
+  <%= link_to root_path, class: "bottom-navigation-item" do %>
+    <i class="fa-solid fa-house link-dark"></i>
+  <% end %>
+
+  <%= link_to todos_path, class: "bottom-navigation-item" do %>
+    <i class="fa-regular fa-square-check link-dark"></i>
+  <% end %>
+
+  <%= link_to events_path, class: "bottom-navigation-item" do %>
+    <i class="fa-regular fa-calendar link-dark"></i>
+  <% end %>
 </div>
