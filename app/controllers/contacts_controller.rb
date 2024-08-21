@@ -5,6 +5,8 @@ class ContactsController < ApplicationController
 
   def show
     @contact = Contact.find(params[:id])
+    @todo = Todo.new
+    @note = Note.new
   end
 
   def new

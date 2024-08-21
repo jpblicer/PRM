@@ -1,3 +1,8 @@
-<ul class="list-group">
-  <render 'notes/note'>
+<ul id="notes" class="list-group" style="list-style-type: none">
+  <% contact.notes.each do |note| %>
+    <li class="list-group-item">
+      <%= note.created_at %>
+      <%= note.content %>
+    <li>
+  <% end %>
 </ul>

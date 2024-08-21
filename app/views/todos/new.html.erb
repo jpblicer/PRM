@@ -1,8 +1,4 @@
 <div class="container">
   <h1>Add a To Do</h1>
-  <%= simple_form_for(@todo) do |f| %>
-  <%= f.input :name, label: 'To Do' %>
-  <%= f.input :end_date, label: 'Due Date', as: :date, html5: true %>
-  <%= f.submit 'Submit', class: 'btn btn-primary mt-2' %>
-<% end %>
+  <%= render 'todos/todo_form' %>
 </div>
