@@ -25,7 +25,7 @@ user = User.create!(
 puts 'seeded user'
 
 10.times do
-  company = Company.create!(
+  Company.create!(
     user: user,
     name: Faker::Company.name,
     address: Faker::Address.street_address,
@@ -38,7 +38,7 @@ end
 puts 'seeded companies'
 
 10.times do
-  contact = Contact.create!(
+  Contact.create!(
     user: user,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -50,18 +50,20 @@ puts 'seeded companies'
     birthday: Faker::Date.between(from: '1970-09-23', to: '2005-09-25'),
     archive: false,
     linkedin: Faker::Internet.domain_name,
-    company: Company.all.sample
+    company: Company.order("RANDOM()").limit(1).first
+    # company: Company.all.sample
   )
 end
 
 puts 'seeded contacs'
 
 10.times do
-  event = Event.create!(
+  Event.create!(
     user: user,
     name: Faker::Music::Opera.verdi,
     address: Faker::Address.street_address,
-    company: Company.all.sample,
+    company: Company.order("RANDOM()").limit(1).first,
+    # company: Company.all.sample,
     start_date: Faker::Date.backward(days: (1..30).to_a.sample),
     end_date: Faker::Date.forward(days: (1..30).to_a.sample)
   )
@@ -70,25 +72,51 @@ end
 puts 'seeded events'
 
 10.times do
-  notes = Note.create!(
+  Note.create!(
     user: user,
     content: Faker::Coffee.notes,
-    noteable: Company.all.sample,
-    # contact: Contact.all.sample
+    noteable: Company.order("RANDOM()").limit(1).first
+    # noteable: Contact.all.sample
+  )
+end
+
+10.times do
+  Note.create!(
+    user: user,
+    content: Faker::Coffee.notes,
+    noteable: Contact.order("RANDOM()").limit(1).first
   )
 end
 
 puts 'seeded notes'
 
-10.times do
-  todo = Todo.create!(
+todos = 10.times.map do
+  Todo.create!(
     user: user,
     name: Faker::Coffee.blend_name,
-    end_date: Faker::Date.forward(days: (1..30).to_a.sample),
-    todoable: Company.all.sample,
-    # contact: Contact.all.sample,
-    # event: Event.all.sample,
-    status: Todo.statuses.keys.sample
+    end_date: Faker::Date.forward(days: 30),
+    status: Todo.statuses.keys.sample,
+    todoable: Contact.order("RANDOM()").limit(1).first
+  )
+end
+
+todos = 10.times.map do
+  Todo.create!(
+    user: user,
+    name: Faker::Coffee.blend_name,
+    end_date: Faker::Date.forward(days: 30),
+    status: Todo.statuses.keys.sample,
+    todoable: Company.order("RANDOM()").limit(1).first
+  )
+end
+
+todos = 10.times.map do
+  Todo.create!(
+    user: user,
+    name: Faker::Coffee.blend_name,
+    end_date: Faker::Date.forward(days: 30),
+    status: Todo.statuses.keys.sample,
+    todoable: Event.order("RANDOM()").limit(1).first
   )
 end
 
