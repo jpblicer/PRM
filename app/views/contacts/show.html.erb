@@ -3,7 +3,11 @@
   <h1>Contact Details</h1>
   <div>
     <div class="avatar-large">
-      <%= image_tag @contact.avatar, alt:"contact-avatar", :class => "avatar-large" %>
+      <% if @contact.avatar %>
+        <%= image_tag(@contact.avatar, alt:"contact-avatar", :class => "avatar-large") %>
+      <% else %>
+        <%= image_tag("contact-default-avatar.jpeg" , alt:"contact-avatar", :class => "avatar-large") %>
+      <% end %>
     </div>
     <div>
       <h2><%= @contact.first_name if @contact.first_name %> <%= @contact.last_name if @contact.last_name %></h2>
