@@ -1,5 +1,7 @@
-<%= simple_form_for(@todo) do |f| %>
+<%= simple_form_for @todo, html: { class: "d-flex", data: { reset_form_target: 'form', action: "turbo:submit-end->reset-form#reset" } } do |f| %>
+  <%= f.hidden_field :todoable_id, value: params["id"] %>
+  <%= f.hidden_field :todoable_type, value: params["controller"].singularize.capitalize %>
   <%= f.input :name, label: 'To Do' %>
-  <%= f.input :end_date, label: 'Due Date', as: :date, html5: true %>
+  <%= f.input :end_date, label: 'Due Date', as: :date, html5: true, input_html: {min: Date.today + 1} %>
   <%= f.submit 'Submit', class: 'btn btn-primary mt-2' %>
 <% end %>
