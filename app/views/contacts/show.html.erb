@@ -3,8 +3,8 @@
   <h1>Contact Details</h1>
   <div>
     <div class="avatar-large">
-      <% if @contact.avatar %>
-        <%= image_tag(@contact.avatar, alt:"contact-avatar", :class => "avatar-large") %>
+      <% if @contact.avatar.attached? %>
+        <%= cl_image_tag(@contact.avatar.key, alt:"contact-avatar", :class => "avatar-large") %>
       <% else %>
         <%= image_tag("contact-default-avatar.jpeg" , alt:"contact-avatar", :class => "avatar-large") %>
       <% end %>
