@@ -3,8 +3,8 @@
   <h1>Contact Details</h1>
   <div>
     <div>
-      <h2><%= @contact.first_name %> <%= @contact.last_name %></h2>
-      <p><%= @contact.job_title %></p>
+      <h2><%= @contact.first_name if @contact.first_name %> <%= @contact.last_name if @contact.last_name %></h2>
+      <p><%= @contact.job_title if @contact.job_title %></p>
     </div>
     <div>
       <a href="<% @contact.linkedin %>" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -16,13 +16,13 @@
   <div>
     <p>Details</p>
     <div>
-      <i class="fa-regular fa-building"></i> <%= @contact.company.name %>
+      <i class="fa-regular fa-building"></i> <%= @contact.company.name if @contact.company %>
     </div>
     <div>
-      <i class="fa-solid fa-location-pin"></i> <%= @contact.country %>, <%= @contact.address %>
+      <i class="fa-solid fa-location-pin"></i> <%= @contact.country if @contact.country %>, <%= @contact.address if @contact.address %>
     </div>
     <div>
-      <i class="fa-solid fa-cake-candles"></i> <%= @contact.birthday %>
+      <i class="fa-solid fa-cake-candles"></i> <%= @contact.birthday if @contact.birthday %>
     </div>
   </div>
   <div>
