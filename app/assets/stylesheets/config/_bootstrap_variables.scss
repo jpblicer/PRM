@@ -41,6 +41,9 @@ body {
   font-size: 1rem;
 }
 
-.container {
-  padding: 2rem;
+.body-container {
+  width: 100vw;
+  padding: 2rem 1rem;
+  height: 100vh;
+  background-color: #fff;
 }
