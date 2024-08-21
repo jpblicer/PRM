@@ -3,22 +3,31 @@ class TodosController < ApplicationController
     @todo = Todo.new
   end
 
+  def show
+    @todo = Todo.find(params[:id])
+  end
+
   def create
     @todo = Todo.new(todo_params)
     @todo.user = current_user
 
     if @todo.save
-      redirect_to root
-      raise
+      # redirect_to @todo
+      respond_to do |format|
+        # format.html { redirect_to batch_path(@batch) }
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace(:todos, partial: "todos/todos",
+            locals: { contact: @todo.todoable })
+        end
+      end
     else
       render :new, status: :unprocessable_entity
-      raise
     end
   end
 
   private
 
   def todo_params
-    params.require(:todo).permit(:name, :end_date, :status)
+    params.require(:todo).permit(:name, :end_date, :status, :todoable_id, :todoable_type)
   end
 end

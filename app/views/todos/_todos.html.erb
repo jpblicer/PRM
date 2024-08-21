@@ -1,0 +1,9 @@
+<ul id="todos" class="list-group" style="list-style-type: none">
+  <% contact.todos.each do |todo| %>
+    <li class="list-group-item">
+      <%= todo.created_at %>
+       - <%= todo.name %>
+       - Due on: <%= todo.end_date %>
+    <li>
+  <% end %>
+</ul>
