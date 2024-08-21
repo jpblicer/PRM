@@ -1,6 +1,7 @@
 .navigation {
   width: 100vw;
-  position: sticky;
+  height: 100px;
+  position: fixed;
   top: 0;
   left: 0;
   display: flex;
@@ -8,9 +9,13 @@
   justify-content: space-between;
   padding: 20px 15px;
   font-size: 2.5rem;
-  border-bottom: 1.5px solid #dee2e6;
+  background-color: #fff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 10;
+
+  &.no-shadow {
+    box-shadow: none;
+  }
 
   .navigation-item {
     &:nth-child(1),
@@ -47,20 +52,23 @@
 
 .add-menu {
   width: 100vw;
+  position: relative;
   visibility: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 0;
   gap: 30px;
   max-height: 0;
   overflow: hidden;
   transition: max-height .3s ease-in-out;
+  margin-top: 85px;
 
   &.show {
     visibility: visible;
     max-height: 1000px;
     transition: max-height .3s ease-in-out;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
   .add-menu-item {
