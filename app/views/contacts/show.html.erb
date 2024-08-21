@@ -8,13 +8,13 @@
     </div>
     <div>
       <% if @contact.linkedin != "" %>
-        <a href="<% @contact.linkedin %>" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="<% @contact.linkedin %>" target="_blank"><i class="fa-brands fa-linkedin-in link-dark"></i></a>
       <% end %>
       <% if @contact.email != "" %>
-        <a href="mailto:<% @contact.email %>"><i class="fa-regular fa-envelope"></i></a>
+        <a href="mailto:<% @contact.email %>"><i class="fa-regular fa-envelope link-dark"></i></a>
       <% end %>
       <% if @contact.phone != "" %>
-        <a href="tel:<% @contact.phone %>"><i class="fa-solid fa-phone"></i></a>
+        <a href="tel:<% @contact.phone %>"><i class="fa-solid fa-phone link-dark"></i></a>
       <% end %>
     </div>
   </div>
