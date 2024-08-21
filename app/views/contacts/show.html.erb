@@ -41,11 +41,11 @@
   <div data-controller="reset-form">
     <h3>To Do's</h3>
     <p>
-      <a class="btn btn-primary" data-reset-form-target="btn" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      <a class="btn btn-primary" data-reset-form-target="btn" data-bs-toggle="collapse" href="#collapseTodo" role="button" aria-expanded="false" aria-controls="collapseExample">
         <i class="fa-solid fa-plus" data-navigation-target="icon"></i>
       </a>
     </p>
-    <div class="collapse" id="collapseExample">
+    <div class="collapse" id="collapseTodo">
       <div class="card card-body">
         <%= render 'todos/todo_form' %>
       </div>
@@ -54,16 +54,20 @@
       <%= render 'todos/todos', contact: @contact %>
     <% end %>
   </div>
-  <div>
+  <div data-controller="reset-form">
     <h3>Notes</h3>
-    <a href="#" class="add-btn" data-action="click->navigation#toggleMenu">
-      <i class="fa-solid fa-plus" data-navigation-target="icon"></i>
-    </a>
-    <a href="#" class="add-btn" data-action="click->navigation#toggleMenu">
-      <i class="fa-regular fa-trash-can"></i>
-    </a>
+    <p>
+      <a class="btn btn-primary" data-reset-form-target="btn" data-bs-toggle="collapse" href="#collapseNote" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <i class="fa-solid fa-plus" data-navigation-target="icon"></i>
+      </a>
+    </p>
+    <div class="collapse" id="collapseNote">
+      <div class="card card-body">
+        <%= render 'notes/add_note' %>
+      </div>
+    </div>
     <%= turbo_frame_tag :notes_list do %>
-    <%= render 'notes/notes' %>
+    <%= render 'notes/notes', contact: @contact %>
     <% end %>
   </div>
 </div>
