@@ -1,6 +1,7 @@
 <%= simple_form_for(@contact) do |f| %>
   <%= f.input :first_name %>
   <%= f.input :last_name %>
+  <%= f.association :company, input_html: {multiple: false, data: {controller: "tom-select"}} %>
   <%= f.input :job_title %>
   <%= f.input :phone %>
   <%= f.input :address %>
