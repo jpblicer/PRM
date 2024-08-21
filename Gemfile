@@ -81,6 +81,5 @@ end
 gem "ffi", "< 1.17.0"
 
 
-# user added gems
-
+# Faker
 gem "faker"
