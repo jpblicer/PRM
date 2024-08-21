@@ -7,19 +7,25 @@
       <p><%= @contact.job_title if @contact.job_title %></p>
     </div>
     <div>
-      <a href="<% @contact.linkedin %>" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-      <a href="mailto:<% @contact.email %>"><i class="fa-regular fa-envelope"></i></a>
-      <a href="tel:<% @contact.phone %>"><i class="fa-solid fa-phone"></i></a>
+      <% if @contact.linkedin != "" %>
+        <a href="<% @contact.linkedin %>" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+      <% end %>
+      <% if @contact.email != "" %>
+        <a href="mailto:<% @contact.email %>"><i class="fa-regular fa-envelope"></i></a>
+      <% end %>
+      <% if @contact.phone != "" %>
+        <a href="tel:<% @contact.phone %>"><i class="fa-solid fa-phone"></i></a>
+      <% end %>
     </div>
   </div>
 
   <div>
-    <p>Details</p>
+    <h4>Details</h4>
     <div>
       <i class="fa-regular fa-building"></i> <%= @contact.company.name if @contact.company %>
     </div>
     <div>
-      <i class="fa-solid fa-location-pin"></i> <%= @contact.country if @contact.country %>, <%= @contact.address if @contact.address %>
+      <i class="fa-solid fa-location-pin"></i> <%= @contact.country if @contact.country %><%= ", " if @contact.country != "" && @contact.address != "" %><%= @contact.address if @contact.address %>
     </div>
     <div>
       <i class="fa-solid fa-cake-candles"></i> <%= @contact.birthday if @contact.birthday %>
