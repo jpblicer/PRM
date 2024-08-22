@@ -1,0 +1,57 @@
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+}
+
+.contact-info {
+  h2 {
+    font-size: 3rem;
+  }
+
+  p {
+    text-align: center;
+  }
+}
+
+
+.icons-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  font-size: 2rem;
+
+  a {
+    padding: 1rem;
+    border-radius: 1rem;
+
+    &:hover {
+      background-color: #dee2e6;
+    }
+    i {
+      color: #000;
+    }
+  }
+}
+
+.details-container {
+  padding: 1.5rem 2rem;
+  background-color: #dee2e6;
+  border-radius: .5rem;
+  font-size: 1.5rem;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+
+
+  .details {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+  }
+}
