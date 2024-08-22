@@ -1,0 +1,52 @@
+// COLORS
+
+// Main Color
+$primary-color: #3F72AF;
+
+// Background Colors
+$background-color: #F9F7F7; // Main Background
+$body-background-color: #d0ebff; // Body Background
+
+// Font Colors
+$font-color: #112D4E; // Main Font Color
+
+// Additional Colors
+$secondary-color: #DBE2EF; // Secondary elements
+$accent-color: #74c0fc; // Accent elements
+
+
+// TYPOGRAPHY
+$heading-font: 'Didact Gothic', sans-serif;
+$body-font: 'Arimo', sans-serif;
+
+
+// GLOBAL SETTINGS
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.5rem;
+  font-family: $body-font;
+  color-scheme: $font-color;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $heading-font;
+}
+
+.body-container {
+  width: 100vw;
+  padding: 2rem 1rem;
+  min-height: calc(100vh-95px);
+  background-color: #fff;
+  margin-top: 9rem;
+  margin-bottom: 9rem;
+}

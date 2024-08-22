@@ -1,6 +1,7 @@
 class TodosController < ApplicationController
   def new
     @todo = Todo.new
+    @page_title = 'New To Do'
   end
 
   def show
@@ -21,7 +22,8 @@ class TodosController < ApplicationController
         end
       end
     else
-      render :new, status: :unprocessable_entity
+      render turbo_stream: turbo_stream.replace(:new_todo, partial: "todos/todo_form",
+        locals: { todo: @todo })
     end
   end
 
