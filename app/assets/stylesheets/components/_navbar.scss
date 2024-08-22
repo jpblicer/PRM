@@ -1,16 +1,16 @@
 .navigation {
   width: 100vw;
-  height: 100px;
+  height: 95px;
   position: fixed;
   top: 0;
   left: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 20px 15px;
-  font-size: 2.5rem;
-  background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px 10px;
+  font-size: 25px;
+  background-color: $background-color;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 10;
 
   &.no-shadow {
@@ -18,14 +18,21 @@
   }
 
   .navigation-item {
+
+    h2 {
+      font-size: 30px;
+      color: $font-color;
+      font-weight: 500;
+    }
+
     &:nth-child(1),
     &:nth-child(3) {
       a {
         padding: 10px;
         border-radius: 10px;
-        color: #000;
+        color: $font-color;
         &:hover {
-          background-color: #dee2e6;
+          background-color: $secondary-color;
         }
       }
     }
@@ -67,8 +74,8 @@
     visibility: visible;
     max-height: 1000px;
     transition: max-height .3s ease-in-out;
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: $background-color;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
   }
 
   .add-menu-item {
@@ -76,7 +83,7 @@
       position: relative;
       display: inline-block;
       padding: 5px 0;
-      color: #333;
+      color: $font-color;
       text-decoration: none;
       font-size: 30px;
 
@@ -87,7 +94,7 @@
         bottom: 0;
         width: 0;
         height: 2px;
-        background-color: #333;
+        background-color: $font-color;
         transition: width 0.3s ease, left 0.3s ease;
         transform: translateX(-50%);
       }
