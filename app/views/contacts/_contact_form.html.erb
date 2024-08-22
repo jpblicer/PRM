@@ -1,14 +1,50 @@
 <%= simple_form_for(@contact) do |f| %>
-  <%= f.input :first_name %>
-  <%= f.input :last_name %>
-  <%= f.association :company, input_html: {multiple: false, data: {controller: "tom-select"}} %>
-  <%= f.input :job_title %>
-  <%= f.input :phone %>
-  <%= f.input :address %>
-  <%= f.input :birthday, as: :date, html5: true %>
-  <%= f.input :linkedin %>
-  <%= f.input :email %>
-  <%= f.input :country, as: :string%>
+
+<div class="form-floating mb-3 fs-6">
+    <%= f.input_field :first_name, label: false, class: "form-control", id: "floatingInput", placeholder: "First Name" %>
+    <%= f.label :first_name %>
+  </div>
+
+  <div class="form-floating mb-3">
+    <%= f.input_field :last_name, label: false, class: "form-control", id: "floatingInput", placeholder: "Last Name" %>
+    <%= f.label :last_name, class: "form-font-medium" %>
+  </div>
+
+
+  <%= f.association :company, input_html: {multiple: false, data: {controller: "tom-select"}}, placeholder: "Company" %>
+
+  <div class="form-floating mb-3">
+    <%= f.input_field :job_title, label: false, class: "form-control", id: "floatingInput", placeholder: "Job Title" %>
+    <%= f.label :job_title %>
+  </div>
+
+  <div class="form-floating mb-3">
+    <%= f.input_field :linkedin, label: false, class: "form-control", id: "floatingInput", placeholder: "Linkedin" %>
+    <%= f.label :linkedin %>
+  </div>
+
+  <div class="form-floating mb-3">
+    <%= f.input_field :email, label: false, class: "form-control", id: "floatingInput", placeholder: "Email" %>
+    <%= f.label :email %>
+  </div>
+
+  <div class="form-floating mb-3">
+    <%= f.input_field :phone, label: false, class: "form-control", id: "floatingInput", placeholder: "Phone" %>
+    <%= f.label :phone %>
+  </div>
+
+  <div class="form-floating mb-3">
+    <%= f.input_field :address, label: false, class: "form-control", id: "floatingInput", placeholder: "Adress" %>
+    <%= f.label :address %>
+  </div>
+
+    <div class="form-floating mb-3">
+    <%= f.input_field :country, as: :string, label: false, class: "form-control", id: "floatingInput", placeholder: "Country" %>
+    <%= f.label :country %>
+  </div>
+
+    <%= f.input :birthday, as: :date, html5: true, class: "fs4" %>
+
   <%= f.input :avatar, as: :file %>
   <%= f.submit 'Submit', class: 'btn btn-primary mt-2' %>
 <% end %>
