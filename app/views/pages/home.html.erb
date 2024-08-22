@@ -7,19 +7,25 @@
 
   <div class="dashboard-counter-container d-flex justify-content-evenly">
     <div class="todo-count-card card text-center p-4">
-      <%= image_tag asset_path 'dashboard_event_splash.png', alt: 'Event-Splash', width: 80 %>
+      <%= image_tag asset_path 'dashboard_event_splash.png', alt: 'Event-Splash' %>
       <h2><%= Event.all.count %></h2>
       <h3>Events</h3>
     </div>
     <div class="event-count-card card card text-center p-4">
-      <%= image_tag asset_path 'dashboard_todo_splash.png', alt: 'Todo-Splash', width: 30 %>
+      <%= image_tag asset_path 'dashboard_todo_splash.png', alt: 'Todo-Splash' %>
       <h2><%= Todo.all.count %></h2>
       <h3>ToDos</h3>
     </div>
   </div>
 
   <div class="upcoming-container">
-
+    <ul>
+      <% @sorted_records.each do |record| %>
+        <li>
+          <p><%= record.end_date %> <%= record.name %></p>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>
 
