@@ -51,8 +51,8 @@ puts 'seeded companies'
     birthday: Faker::Date.between(from: '1970-09-23', to: '2005-09-25'),
     archive: false,
     linkedin: Faker::Internet.domain_name,
-    company: Company.order("RANDOM()").limit(1).first,
-    avatar: "https://media.licdn.com/dms/image/v2/C5603AQGFsq4Z2sjOzA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1638927273157?e=1729728000&v=beta&t=2y7V9w5wGzydguJucApw8p4gjiUXgROUgPmN2tiM62Y"
+    company: Company.order("RANDOM()").limit(1).first
+    # avatar: "https://media.licdn.com/dms/image/v2/C5603AQGFsq4Z2sjOzA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1638927273157?e=1729728000&v=beta&t=2y7V9w5wGzydguJucApw8p4gjiUXgROUgPmN2tiM62Y"
     # company: Company.all.sample
   )
 end

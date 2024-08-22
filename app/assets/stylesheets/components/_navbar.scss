@@ -26,6 +26,10 @@
       font-weight: 500;
     }
 
+    .hidden {
+      display: none;
+    }
+
     &:nth-child(1),
     &:nth-child(3) {
       a {
