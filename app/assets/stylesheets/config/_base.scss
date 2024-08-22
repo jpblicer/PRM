@@ -36,17 +36,24 @@ body {
   font-size: 1.5rem;
   font-family: $body-font;
   color-scheme: $font-color;
+  font-weight: 500;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $heading-font;
+  font-weight: 900;
+}
+
+a {
+  text-decoration: none;
+  color: $font-color;
 }
 
 .body-container {
   width: 100vw;
   padding: 2rem 1rem;
   min-height: 100rem; // calc(100vh-95px);
-  background-color: #fff;
+  background-color: $secondary-color;
   margin-top: 9rem;
   margin-bottom: 9rem;
 }
