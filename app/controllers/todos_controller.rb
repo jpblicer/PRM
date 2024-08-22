@@ -1,6 +1,7 @@
 class TodosController < ApplicationController
   def new
     @todo = Todo.new
+    @page_title = 'New To Do'
   end
 
   def show

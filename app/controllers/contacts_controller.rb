@@ -1,16 +1,19 @@
 class ContactsController < ApplicationController
   def index
     @contacts = Contact.all
+    @page_title = 'Contacts'
   end
 
   def show
     @contact = Contact.find(params[:id])
     @todo = Todo.new
     @note = Note.new
+    @page_title = 'Contact Details'
   end
 
   def new
     @contact = Contact.new
+    @page_title = 'New Contact'
   end
 
   def create
