@@ -1,9 +1,8 @@
 <ul id="todos" class="list-group" style="list-style-type: none">
   <% contact.todos.each do |todo| %>
-    <li class="list-group-item">
-      <%= todo.created_at %>
-       - <%= todo.name %>
-       - Due on: <%= todo.end_date %>
+    <li class="bg-primary-subtle rounded-3 my-1 py-2 px-3">
+      <p><strong><%= todo.created_at.strftime("%d %b %Y") %></strong></p>
+      <p><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> <%= todo.name %> - Due on: <%= todo.end_date.strftime("%d %b %Y") %></p>
     <li>
   <% end %>
 </ul>
