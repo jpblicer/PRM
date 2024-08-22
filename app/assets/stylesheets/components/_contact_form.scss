@@ -1,0 +1,9 @@
+.ts-control, .ts-wrapper.single.input-active .ts-control {
+  background: #f4f4f4 !important;
+  border-top: #f4f4f4 !important;
+  border-left: #f4f4f4 !important;
+  border-right: #f4f4f4 !important;
+  // border-bottom: #d0d0d0 !important;
+  border-radius: 0 !important;
+  height: calc(3.5rem + calc(var(--bs-border-width)* 2)) !important;
+}
