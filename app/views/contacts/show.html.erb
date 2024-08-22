@@ -50,7 +50,7 @@
     </p>
     <div class="collapse" id="collapseTodo">
       <div class="card card-body bg-primary-subtle rounded-3">
-        <%= render 'todos/todo_form' %>
+        <%= render 'todos/todo_form', todo: @todo %>
       </div>
     </div>
     <%= turbo_frame_tag :todos_list do %>
