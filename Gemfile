@@ -83,3 +83,6 @@ gem "ffi", "< 1.17.0"
 
 # Faker
 gem "faker"
+
+# Cloudinary
+gem "cloudinary"

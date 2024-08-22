@@ -4,4 +4,5 @@ class Contact < ApplicationRecord
   has_many :todos, as: :todoable
   has_many :notes, as: :noteable
   has_many :events, through: :event_contacts
+  has_one_attached :avatar
 end
