@@ -7,7 +7,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 15px 10px;
+  align-items: center;
+  padding: 0px 10px;
   font-size: 25px;
   background-color: $background-color;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -59,7 +60,7 @@
 
 .add-menu {
   width: 100vw;
-  position: relative;
+  position: fixed;
   visibility: hidden;
   display: flex;
   flex-direction: column;
@@ -68,7 +69,7 @@
   max-height: 0;
   overflow: hidden;
   transition: max-height .3s ease-in-out;
-  margin-top: 85px;
+  z-index: 10;
 
   &.show {
     visibility: visible;
