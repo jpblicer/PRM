@@ -1,6 +1,6 @@
 .bottom-navigation {
   width: 100vw;
-  height: 100px;
+  height: 95px;
   margin-top: 60px;
   position: fixed;
   bottom: 0;
@@ -9,12 +9,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 15px;
+  padding: 15px 10px;
   font-size: 25px;
-  border-bottom: 1.5px solid #dee2e6;
   z-index: 10;
-  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  background-color: $background-color;
+  color: $font-color;
 
   .bottom-navigation-item {
     padding: 10px;
@@ -22,7 +22,7 @@
     transition: all 0.3s;
 
     &:hover {
-      background-color: #dee2e6;
+      background-color: $secondary-color;
     }
   }
 
