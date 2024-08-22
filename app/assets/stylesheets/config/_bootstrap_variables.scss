@@ -6,7 +6,7 @@
 
 // General style
 $font-family-sans-serif: $body-font;
-$headings-font-family:   $headers-font;
+$headings-font-family:   $heading-font;
 $body-bg:                $light-gray;
 $font-size-base:         1rem;
 
@@ -26,24 +26,3 @@ $border-radius-xl:            .5rem;
 $border-radius-xxl:           1rem;
 
 // Override other variables below!
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-}
-
-html {
-  font-size: 62.5%;
-}
-
-body {
-  font-size: 1rem;
-}
-
-.body-container {
-  width: 100vw;
-  padding: 2rem 1rem;
-  height: 100vh;
-  background-color: #fff;
-}

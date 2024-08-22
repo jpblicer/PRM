@@ -6,6 +6,7 @@ class ContactsController < ApplicationController
   def show
     @contact = Contact.find(params[:id])
     @todo = Todo.new
+    @note = Note.new
   end
 
   def new
@@ -25,6 +26,6 @@ class ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact).permit(:first_name, :last_name, :job_title, :phone, :address, :birthday, :linkedin, :email, :country, :company_id)
+    params.require(:contact).permit(:first_name, :last_name, :job_title, :phone, :address, :birthday, :linkedin, :email, :country, :company_id, :avatar)
   end
 end
