@@ -1,0 +1,11 @@
+<% @contacts.each do |contact| %>
+  <div class="contact-card">
+    <div>
+    <%= image_tag("contact-default-avatar.jpeg", alt: "contact-avatar", class: "contact-avatar") %>
+    </div>
+    <div class="contact-details">
+      <h3><%= contact.first_name %> <%= contact.last_name %></h3>
+      <p><%= contact.company.name if contact.company %></p>
+    </div>
+  </div>
+<% end %>
