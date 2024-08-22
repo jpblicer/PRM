@@ -1,5 +1,5 @@
 <div class="contact-container">
-  <div class="avatar-large">
+  <div class="avatar-large shadow-sm">
     <% if @contact.avatar.attached? %>
       <%= cl_image_tag(@contact.avatar.key, alt:"contact-avatar", :class => "avatar-large") %>
     <% else %>
@@ -24,7 +24,6 @@
 </div>
 
 <div class='details-container bg-primary-subtle rounded-3 shadow-sm mb-2'>
-  <h2>Details</h2>
   <div class='details'>
     <i class="fa-regular fa-building"></i>
     <p><%= @contact.company.name if @contact.company %></p>
