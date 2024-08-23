@@ -1,56 +1,28 @@
-<% if Event.all.count < 1 && Todo.all.count < 1 %>
-  <%= render 'shared/no_data' %>
-<% else %>
-
-
-<div class="container mt-4">
-
-  <div class="dashboard-counter-container d-flex justify-content-evenly">
-    <div class="todo-count-card card text-center p-4 rounded-4">
-      <%= image_tag asset_path('dashboard_todo_splash.png'), alt: 'Event-Splash', width: 100 %>
-      <h2 class="pt-2"><%= Event.all.count %></h2>
-      <h3>Events</h3>
-    </div>
-    <div class="event-count-card card card text-center p-4 rounded-4">
-      <%= image_tag asset_path('dashboard_event_splash.png'), alt: 'Todo-Splash', width: 100, height:75 %>
-      <h2 class="pt-2"><%= Todo.all.count %></h2>
-      <h3>ToDos</h3>
-    </div>
+<div class="container">
+  <h2 class="py-2"><strong>Recently Contacted</strong></h2>
+  <div class="recent-contacts-container d-flex justify-content-around py-4">
+    <% @recent_contacts.each do |contact| %>
+      <%= link_to contact_path(contact) do %>
+        <div class="recent-contact d-flex flex-column align-items-center">
+          <% if contact.avatar.attached? %>
+            <%= cl_image_tag(contact.avatar.key, alt: "contact-avatar", class: "avatar rounded-circle border border-1 border-dark shadow", style:"width: 8rem;") %>
+          <% else %>
+            <%= image_tag("contact-default-avatar.png" , alt: "contact-avatar", class: "avatar rounded-circle border border-1 border-dark shadow", style:"width: 8rem;") %>
+          <% end %>
+          <div class="recent-contact-name-container pt-2">
+            <h4><%= contact.first_name %> <%= contact.last_name %></h4>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
   </div>
-
-  <div class="upcoming-container">
-    <h2 class="text-center py-4">Upcoming</h2>
-    <div class="upcoming-list-container">
-      <ul class="list-group">
-        <% @sorted_records.each do |record| %>
-          <li class="list-item card py-2 my-2 rounded-4">
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="card-left ps-4 d-flex">
-                <% if record.instance_of?(Event) %>
-                  <i style="font-size: 2rem; color: blue;" class="card d-flex align-items-center justify-content-center fa-solid fa-calendar-day px-4 me-2 bg-light rounded-4"></i>
-                <% else %>
-                  <i style="font-size: 2rem; color: green" class="card d-flex align-items-center justify-content-center fa-solid fa-solid fa-clipboard-list px-4 me-2 bg-light rounded-4"></i>
-                <% end %>
-                <div class="card-left-content">
-                  <h4><strong><%= record.name %></strong></h4>
-                  <h5><%= record.class %></h5>
-                </div>
-              </div>
-              <div class="card-left pe-4">
-                <h4 class="border p-2 rounded-pill bg-light"><%= record.end_date %></h4>
-              </div>
-            </div>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-
-
 </div>
 
-
-
-
-
-<% end %>
+<%# <% if Event.all.count < 1 && Todo.all.count < 1 %>
+  <%# <%= render 'shared/no_data' %>
+<%# <% else %>
+  <%# <div class="container mt-4"> %>
+    <%# <%= render 'pages/dashboard_counters' %>
+    <%= render 'pages/upcoming_eventstodos' %>
+  <%# </div> %>
+<%# <% end %>
