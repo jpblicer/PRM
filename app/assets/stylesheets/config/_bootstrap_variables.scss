@@ -26,3 +26,7 @@ $border-radius-xl:            .5rem;
 $border-radius-xxl:           1rem;
 
 // Override other variables below!
+
+.form-floating .form-control{
+  min-height: 50px;
+}
