@@ -1,8 +1,28 @@
-<% if Event.all.count < 1 && Todo.all.count < 1 %>
-  <%= render 'shared/no_data' %>
-<% else %>
-  <div class="container mt-4">
-    <%= render 'pages/dashboard_counters' %>
-    <%= render 'pages/upcoming_eventstodos' %>
+<div class="container">
+  <h2 class="py-2"><strong>Recently Contacted</strong></h2>
+  <div class="recent-contacts-container d-flex justify-content-around py-4">
+    <% @recent_contacts.each do |contact| %>
+      <%= link_to contact_path(contact) do %>
+        <div class="recent-contact d-flex flex-column align-items-center">
+          <% if contact.avatar.attached? %>
+            <%= cl_image_tag(contact.avatar.key, alt: "contact-avatar", class: "avatar rounded-circle border border-1 border-dark shadow", style:"width: 8rem;") %>
+          <% else %>
+            <%= image_tag("contact-default-avatar.png" , alt: "contact-avatar", class: "avatar rounded-circle border border-1 border-dark shadow", style:"width: 8rem;") %>
+          <% end %>
+          <div class="recent-contact-name-container pt-2">
+            <h4><%= contact.first_name %> <%= contact.last_name %></h4>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
   </div>
-<% end %>
+</div>
+
+<%# <% if Event.all.count < 1 && Todo.all.count < 1 %>
+  <%# <%= render 'shared/no_data' %>
+<%# <% else %>
+  <%# <div class="container mt-4"> %>
+    <%# <%= render 'pages/dashboard_counters' %>
+    <%= render 'pages/upcoming_eventstodos' %>
+  <%# </div> %>
+<%# <% end %>

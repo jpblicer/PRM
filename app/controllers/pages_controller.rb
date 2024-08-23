@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
+    @recent_contacts = Contact.order(updated_at: :desc).first(3)
     todos = Todo.all
     events = Event.all
     combined_records = todos.to_a + events.to_a
