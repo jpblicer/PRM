@@ -1,42 +1,9 @@
 <div class="contact-container">
-  <div class="avatar-large shadow-sm">
-    <% if @contact.avatar.attached? %>
-      <%= cl_image_tag(@contact.avatar.key, alt:"contact-avatar", :class => "avatar-large") %>
-    <% else %>
-      <%= image_tag("contact-default-avatar.png" , alt:"contact-avatar", :class => "avatar-large") %>
-    <% end %>
-  </div>
-  <div class="contact-info">
-    <h2><%= @contact.first_name if @contact.first_name %> <%= @contact.last_name if @contact.last_name %></h2>
-    <p><%= @contact.job_title if @contact.job_title %></p>
-  </div>
-  <div class="icons-container">
-    <% if @contact.linkedin != "" %>
-    <a href="<% @contact.linkedin %>" target="_blank"><i class="fa-brands fa-linkedin-in text-primary"></i></a>
-  <% end %>
-  <% if @contact.email != "" %>
-    <a href="mailto:<% @contact.email %>"><i class="fa-regular fa-envelope text-primary"></i></a>
-  <% end %>
-  <% if @contact.phone != "" %>
-    <a href="tel:<% @contact.phone %>"><i class="fa-solid fa-phone text-primary"></i></a>
-  <% end %>
-  </div>
+  <%= render 'contacts/contact' %>
 </div>
 
-<div class='details-container bg-primary-subtle rounded-3 shadow-sm mb-2'>
-  <div class='details'>
-    <i class="fa-regular fa-building"></i>
-    <p><%= @contact.company.name if @contact.company %></p>
-
-  </div>
-  <div class='details'>
-    <i class="fa-solid fa-location-pin"></i>
-    <p><%= @contact.country if @contact.country %><%= ", " if @contact.country != "" && @contact.address != "" %><%= @contact.address if @contact.address %></p>
-  </div>
-  <div class='details'>
-    <i class="fa-solid fa-cake-candles"></i>
-    <p><%= @contact.birthday if @contact.birthday %></p>
-  </div>
+<div class='details-container bg-white rounded-3 shadow-sm mb-2'>
+  <%= render 'contacts/contact_details' %>
 </div>
 
 <div class="form-container">
@@ -44,37 +11,41 @@
     <div class="d-flex justify-content-between align-items-center mt-3">
       <h3>To Do's</h3>
       <p>
-        <a class="btn btn-primary" data-reset-form-target="btn" data-bs-toggle="collapse" href="#collapseTodo" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <a class="btn btn-primary rounded-4 shadow" data-reset-form-target="btn" data-bs-toggle="collapse" href="#collapseTodo" role="button" aria-expanded="false" aria-controls="collapseExample">
           <i class="fa-solid fa-plus" data-navigation-target="icon"></i>
         </a>
       </p>
     </div>
-
     <div class="collapse" id="collapseTodo">
-      <div class="card card-body bg-primary-subtle rounded-3">
+      <div class="card card-body bg-white rounded-4 shadow">
         <%= render 'todos/todo_form', todo: @todo %>
       </div>
     </div>
-    <%= turbo_frame_tag :todos_list do %>
-      <%= render 'todos/todos', contact: @contact %>
-    <% end %>
+    <div class="todo-container rounded-4 shadow" style="max-height: 24vh; overflow: scroll;">
+      <%= turbo_frame_tag :todos_list do %>
+        <%= render 'todos/todos', contact: @contact %>
+      <% end %>
+    </div>
   </div>
+
   <div data-controller="reset-form">
     <div class="d-flex justify-content-between align-items-center mt-3">
       <h3>Notes</h3>
       <p>
-        <a class="btn btn-primary" data-reset-form-target="btn" data-bs-toggle="collapse" href="#collapseNote" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <a class="btn btn-primary rounded-4 shadow" data-reset-form-target="btn" data-bs-toggle="collapse" href="#collapseNote" role="button" aria-expanded="false" aria-controls="collapseExample">
           <i class="fa-solid fa-plus" data-navigation-target="icon"></i>
         </a>
       </p>
     </div>
     <div class="collapse" id="collapseNote">
-      <div class="card card-body bg-primary-subtle rounded-3">
+      <div class="card card-body bg-white rounded-4 shadow">
         <%= render 'notes/add_note' %>
       </div>
     </div>
-    <%= turbo_frame_tag :notes_list do %>
-    <%= render 'notes/notes', contact: @contact %>
-    <% end %>
+    <div class="notes-container rounded-4 shadow" style="max-height: 24vh; overflow: scroll;">
+      <%= turbo_frame_tag :notes_list do %>
+        <%= render 'notes/notes', contact: @contact %>
+      <% end %>
+    </div>
   </div>
 </div>

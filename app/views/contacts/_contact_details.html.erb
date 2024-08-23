@@ -1,0 +1,13 @@
+<div class='details'>
+    <i class="fa-regular fa-building"></i>
+    <p><%= @contact.company.name if @contact.company %></p>
+
+  </div>
+  <div class='details'>
+    <i class="fa-solid fa-location-pin"></i>
+    <p><%= @contact.country if @contact.country %><%= ", " if @contact.country != "" && @contact.address != "" %><%= @contact.address if @contact.address %></p>
+  </div>
+  <div class='details'>
+    <i class="fa-solid fa-cake-candles"></i>
+    <p><%= @contact.birthday if @contact.birthday %></p>
+  </div>
