@@ -21,7 +21,7 @@
         <%= render 'todos/todo_form', todo: @todo %>
       </div>
     </div>
-    <div class="todo-container rounded-4 shadow" style="max-height: 24vh; overflow: scroll;">
+    <div class="todo-container rounded-4" style="max-height: 24vh; overflow: scroll;">
       <%= turbo_frame_tag :todos_list do %>
         <%= render 'todos/todos', contact: @contact %>
       <% end %>
@@ -42,7 +42,7 @@
         <%= render 'notes/add_note' %>
       </div>
     </div>
-    <div class="notes-container rounded-4 shadow" style="max-height: 24vh; overflow: scroll;">
+    <div class="notes-container rounded-4" style="max-height: 24vh; overflow: scroll;">
       <%= turbo_frame_tag :notes_list do %>
         <%= render 'notes/notes', contact: @contact %>
       <% end %>
