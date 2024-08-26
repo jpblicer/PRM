@@ -4,7 +4,9 @@
 
 <div class='details-container bg-white rounded-3 shadow-sm mb-3'>
   <div class="d-flex justify-content-end">
-    <i class="fa-regular fa-pen-to-square"></i>
+    <%= link_to edit_contact_path(@contact) do %>
+      <i class="fa-regular fa-pen-to-square"></i>
+    <% end %>
   </div>
   <div>
     <%= render 'contacts/contact_details' %>
