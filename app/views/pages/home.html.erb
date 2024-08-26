@@ -1,8 +1,10 @@
-<% if Event.all.count < 1 && Todo.all.count < 1 %>
-  <%= render 'shared/no_data' %>
-<% else %>
-  <div class="container mt-4">
-    <%= render 'pages/dashboard_counters' %>
-    <%= render 'pages/upcoming_eventstodos' %>
-  </div>
-<% end %>
+<%= render 'pages/dashboard_recentlycontacted' %>
+
+<%# <% if Event.all.count < 1 && Todo.all.count < 1 %>
+  <%# <%= render 'shared/no_data' %>
+<%# <% else %>
+  <%# <div class="container mt-4"> %>
+    <%# <%= render 'pages/dashboard_counters' %>
+    <%= render 'pages/dashboard_upcoming' %>
+  <%# </div> %>
+<%# <% end %>

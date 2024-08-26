@@ -1,61 +1,83 @@
 <%= simple_form_for(@contact, html: { id: "contact_form", class: "custom-form-class" }) do |f| %>
 
- <div class="mb-3">
-  <%= f.input :business_card, as: :file, label: 'Upload Business Card', input_html: { class: 'form-control', id: 'contact_business_card' } %>
-</div>
+  <div class="form-container bg-white">
+    <h3>Personal Info</h3>
 
-  <div class="form-floating mb-3">
-    <%= f.input_field :first_name, label: false, class: "form-control", id: "floatingFirstName", placeholder: "First Name" %>
-    <%= f.label :first_name, for: "floatingFirstName" %>
+    <div class="mb-3">
+      <%= f.input :business_card, as: :file, label: 'Upload Business Card to auto populate fields', input_html: { class: 'form-control', id: 'contact_business_card' } %>
+    </div>
+
+      <div class="form-floating mb-3 fs-6">
+        <%= f.input_field :first_name, label: false, class: "form-control form-control-lg", id: "floatingInput", placeholder: "First Name" %>
+        <%= f.label :first_name %>
+      </div>
+
+      <div class="form-floating mb-3 fs-6">
+        <%= f.input_field :last_name, label: false, class: "form-control form-control-lg", id: "floatingInput", placeholder: "Last Name" %>
+        <%= f.label :last_name %>
+      </div>
+
+
+    <%= f.association :company, input_html: {multiple: false, data: {controller: "tom-select"}}, class: "form-control form-control-lg" , placeholder: "Company" %>
+
+    <div class="form-floating mb-3 fs-6">
+      <%= f.input_field :job_title, label: false, class: "form-control form-control-lg", id: "floatingInput", placeholder: "Job Title" %>
+      <%= f.label :job_title %>
+    </div>
   </div>
 
-  <div class="form-floating mb-3">
-    <%= f.input_field :last_name, label: false, class: "form-control", id: "floatingLastName", placeholder: "Last Name" %>
-    <%= f.label :last_name, for: "floatingLastName", class: "form-font-medium" %>
+  <div class="form-container bg-white">
+    <div class="d-flex justify-content-between align-items-center mt-3">
+      <h3>Contact Info</h3>
+      <p>
+        <a class="btn btn-primary  rounded-4" data-reset-form-target="btn" data-bs-toggle="collapse" href="#collapseContactDetails" role="button" aria-expanded="false" aria-controls="collapseExample">
+          <i class="fa-solid fa-chevron-down" data-navigation-target="icon"></i>
+        </a>
+      </p>
+    </div>
+    <div class="collapse" id="collapseContactDetails">
+      <div class="form-floating mb-3 fs-6">
+        <%= f.input_field :linkedin, label: false, class: "form-control form-control-lg", id: "floatingInput", placeholder: "Linkedin" %>
+        <%= f.label :linkedin %>
+      </div>
+
+      <div class="form-floating mb-3 fs-6">
+        <%= f.input_field :email, label: false, class: "form-control form-control-lg", id: "floatingInput", placeholder: "Email" %>
+        <%= f.label :email %>
+      </div>
+
+      <div class="form-floating mb-3 fs-6">
+        <%= f.input_field :phone, label: false, class: "form-control form-control-lg", id: "floatingInput", placeholder: "Phone" %>
+        <%= f.label :phone %>
+      </div>
+    </div>
   </div>
 
-  <div class="mb-3">
-    <%= f.association :company, input_html: { multiple: false, data: { controller: "tom-select" }, class: 'form-control' }, label: "Company", placeholder: "Select a company" %>
-  </div>
+  <div class="form-container bg-white">
+    <div class="d-flex justify-content-between align-items-center mt-3">
+      <h3>Details</h3>
+      <p>
+        <a class="btn btn-primary rounded-4" data-reset-form-target="btn" data-bs-toggle="collapse" href="#collapseDetails" role="button" aria-expanded="false" aria-controls="collapseExample">
+          <i class="fa-solid fa-chevron-down" data-navigation-target="icon"></i>
+        </a>
+      </p>
+    </div>
 
-  <div class="form-floating mb-3">
-    <%= f.input_field :job_title, label: false, class: "form-control", id: "floatingJobTitle", placeholder: "Job Title" %>
-    <%= f.label :job_title, for: "floatingJobTitle" %>
-  </div>
+    <div class="collapse" id="collapseDetails">
+      <div class="form-floating mb-3 fs-6">
+        <%= f.input_field :address, label: false, class: "form-control form-control-lg", id: "floatingInput", placeholder: "Adress" %>
+        <%= f.label :address %>
+      </div>
 
-  <div class="form-floating mb-3">
-    <%= f.input_field :linkedin, label: false, class: "form-control", id: "floatingLinkedin", placeholder: "LinkedIn" %>
-    <%= f.label :linkedin, for: "floatingLinkedin" %>
-  </div>
+        <div class="form-floating mb-3 fs-6">
+        <%= f.input_field :country, as: :string, label: false, class: "form-control form-control-lg", id: "floatingInput", placeholder: "Country" %>
+        <%= f.label :country %>
+      </div>
 
-  <div class="form-floating mb-3">
-    <%= f.input_field :email, label: false, class: "form-control", id: "floatingEmail", placeholder: "Email" %>
-    <%= f.label :email, for: "floatingEmail" %>
-  </div>
+        <%= f.input :birthday, as: :date, html5: true, input_html: { class: "form-control form-control-lg fs-6" } %>
 
-  <div class="form-floating mb-3">
-    <%= f.input_field :phone, label: false, class: "form-control", id: "floatingPhone", placeholder: "Phone" %>
-    <%= f.label :phone, for: "floatingPhone" %>
-  </div>
-
-  <div class="form-floating mb-3">
-    <%= f.input_field :address, label: false, class: "form-control", id: "floatingAddress", placeholder: "Address" %>
-    <%= f.label :address, for: "floatingAddress" %>
-  </div>
-
-  <div class="form-floating mb-3">
-    <%= f.input_field :country, as: :string, label: false, class: "form-control", id: "floatingCountry", placeholder: "Country" %>
-    <%= f.label :country, for: "floatingCountry" %>
-  </div>
-
-  <div class="mb-3">
-    <%= f.input :birthday, as: :date, html5: true, label: 'Birthday', input_html: { class: "form-control" } %>
-  </div>
-
-  <div class="mb-3">
-    <%= f.input :avatar, as: :file, label: 'Upload Avatar', input_html: { class: 'form-control' } %>
-  </div>
-
-  <%= f.submit 'Submit', class: 'btn btn-primary mt-2' %>
-
+      <%= f.input :avatar, as: :file, input_html: { class: "form-control form-control-lg fs-6" } %>
+    </div>
+    </div>
+    <%= f.submit 'Submit', class: 'btn btn-primary mt-2 btn-lg rounded-4' %>
 <% end %>

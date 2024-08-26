@@ -2,11 +2,11 @@
   <%= render 'contacts/contact' %>
 </div>
 
-<div class='details-container bg-white rounded-3 shadow-sm mb-2'>
+<div class='details-container bg-white rounded-3 shadow-sm mb-3'>
   <%= render 'contacts/contact_details' %>
 </div>
 
-<div class="form-container">
+<div class="contact-form-container">
   <div data-controller="reset-form">
     <div class="d-flex justify-content-between align-items-center mt-3">
       <h3>To Do's</h3>
@@ -21,7 +21,7 @@
         <%= render 'todos/todo_form', todo: @todo %>
       </div>
     </div>
-    <div class="todo-container rounded-4 shadow" style="max-height: 24vh; overflow: scroll;">
+    <div class="todo-container rounded-4" style="max-height: 24vh; overflow: scroll;">
       <%= turbo_frame_tag :todos_list do %>
         <%= render 'todos/todos', contact: @contact %>
       <% end %>
@@ -42,7 +42,7 @@
         <%= render 'notes/add_note' %>
       </div>
     </div>
-    <div class="notes-container rounded-4 shadow" style="max-height: 24vh; overflow: scroll;">
+    <div class="notes-container rounded-4" style="max-height: 24vh; overflow: scroll;">
       <%= turbo_frame_tag :notes_list do %>
         <%= render 'notes/notes', contact: @contact %>
       <% end %>
