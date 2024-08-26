@@ -1,11 +1,20 @@
 <% @contacts.each do |contact| %>
-  <%= link_to contact_path(contact), class: "contact-card" do %>
-    <div>
-      <%= image_tag("contact-default-avatar.jpeg", alt: "contact-avatar", class: "contact-avatar") %>
-    </div>
-    <div class="contact-details">
-      <h3><%= contact.first_name %> <%= contact.last_name %></h3>
-      <p><%= contact.company.name if contact.company %></p>
-    </div>
-  <% end %>
+  <div class="contact-card">
+    <%= link_to contact_path(contact), class: "" do %>
+      <div class="contact-link-card">
+        <div>
+          <% if contact.avatar.attached? %>
+            <%= cl_image_tag(contact.avatar.key, transformation: { width: 640, height: 640, crop: "fill", gravity: "faces" }, alt:"contact-avatar", class: "avatar-small") %>
+          <% else %>
+            <%= image_tag("contact-default-avatar.png" , alt:"contact-avatar", class: "avatar-small border") %>
+          <% end %>
+        </div>
+        <div class="contact-details">
+          <h3><%= contact.first_name %> <%= contact.last_name %></h3>
+          <p><%= contact.company.name if contact.company %></p>
+        </div>
+      </div>
+    <% end %>
+    <%= render 'contacts/contact_icons', contact: contact %>
+  </div>
 <% end %>

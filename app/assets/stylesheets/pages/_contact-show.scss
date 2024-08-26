@@ -16,26 +16,6 @@
   }
 }
 
-
-.icons-container {
-  display: flex;
-  width: 100%;
-  justify-content: space-evenly;
-  font-size: 2rem;
-
-  a {
-    padding: 1rem;
-    border-radius: 1rem;
-
-    &:hover {
-      background-color: #dee2e6;
-    }
-    i {
-      color: #000;
-    }
-  }
-}
-
 .details-container {
   padding: 1.5rem 2rem;
   background-color: #dee2e6;
