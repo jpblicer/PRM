@@ -3,7 +3,7 @@ require 'json'
 
 class ExtractBusinessCard
   INSTRUCTIONS = <<~INSTRUCTIONS
-    Please extract the details from the business card image in the previous photo. The details should include the person's first_name, last_name, job_title, phone, address, and return them in a JSON format without markdown or anything else. Only return the JSON object, without any introduction or explanation.
+    Please extract the details from the business card image in the previous photo. The details should include the person's first_name, last_name, job_title, email, phone, address, and return them in a JSON format without markdown or anything else. Only return the JSON object, without any introduction or explanation.
   INSTRUCTIONS
 
   def initialize(photo_url)
