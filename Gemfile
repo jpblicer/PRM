@@ -86,3 +86,6 @@ gem "faker"
 
 # Cloudinary
 gem "cloudinary"
+
+gem 'openai'
+gem "ruby-openai"
