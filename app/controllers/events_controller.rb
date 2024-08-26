@@ -1,4 +1,11 @@
 class EventsController < ApplicationController
+
+  def index
+    @events = Event.all
+    @events = Event.where('end_date >= ?', Date.today).order(start_date: :asc)
+    @page_title = 'Events'
+  end
+
   def new
     @event = Event.new
     @contact_collection = Contact.all

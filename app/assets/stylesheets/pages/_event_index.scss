@@ -1,0 +1,39 @@
+a {
+  text-decoration: none;
+  color: $font-color;
+}
+
+
+.event-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: .4rem;
+  padding: 1rem;
+  background-color: $background-color;
+  border-radius: .5rem;
+  box-shadow: 0 .5rem 1rem rgba($color: #000000, $alpha: 0.1);
+
+  h3 {
+    text-decoration: none;
+  }
+  .event-details {
+
+    h3 {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+  }
+
+  .event-date {
+    p {
+      font-size: 1.5rem;
+    }
+  }
+}
