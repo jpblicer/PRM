@@ -4,7 +4,11 @@
     <%# did not use card bootstrap class here because the card breaks the d-flex class %>
       <div class="company-card-container border border-dark border-2 bg-white rounded-4 my-4 p-2 d-flex justify-content-between align-items-center">
         <div class="card-left d-flex align-items-center py-2">
-          <%= image_tag"company-default-avatar.jpeg", alt: "company-avatar", style: "width: 6rem; height: 6rem", class: "rounded-4" %>
+          <% if company.avatar.key.nil? %>
+              <%= image_tag("company-default-avatar.jpeg", alt:"company-avatar", style: "height: 6rem; width:6rem;", class: "rounded-4") %>
+          <% else %>
+            <%= cl_image_tag(company.avatar.key, transformation: { width: 640, height: 640, crop: "fill" }, alt:"company-avatar", style: "height: 6rem; width: 6rem;", class: "rounded-4") %>
+          <% end %>
           <h2 class="ps-2"><%= company.name %></h2>
         </div>
         <div class="card-right me-4 rounded border border-black border-2 bg-light rounded rounded-circle p-4">
