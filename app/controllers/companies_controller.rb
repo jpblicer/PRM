@@ -15,13 +15,18 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    @company = Company.new(company_params)
+    # debugger
+    @company = params[:name] ? Company.create!(name: params[:name], user: current_user) : Company.new(company_params)
     @company.user = current_user
 
-    if @company.save
-      redirect_to @company
+    if params[:name].nil?
+      if @company.save
+        redirect_to @company
+      else
+        render :new, status: :unprocessable_entity
+      end
     else
-      render :new, status: :unprocessable_entity
+      @contact = Contact.new
     end
   end
 
