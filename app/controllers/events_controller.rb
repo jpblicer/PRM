@@ -8,10 +8,24 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user = current_user
+    # @contact = Contact.find(params[:contact_id])
+
     if @event.save
-      redirect_to root_path
+      redirect_to events_path
+      # event_params[:contact_ids].each do |contact_id|
+      #   next if contact_id.blank?
+      #   EventContact.create(event: @event, contact_id: contact_id)
+      # end
+
+      # respond_to do |format|
+      #   format.turbo_stream do
+      #     render turbo_stream: turbo_stream.replace(:events, partial: "events/events",
+      #       locals: { events: @contact.events })
+      #   end
+      # end
     else
-      render 'new', status: :unprocessable_entity
+      render turbo_stream: turbo_stream.replace(:new_event, partial: "events/new",
+        locals: { event: @event })
     end
   end
 
