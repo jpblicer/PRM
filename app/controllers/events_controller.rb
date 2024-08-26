@@ -1,4 +1,10 @@
 class EventsController < ApplicationController
+
+  def index
+    @events = Event.all
+    @page_title = 'Events'
+  end
+
   def new
     @event = Event.new
     @contact_collection = Contact.all
