@@ -6,7 +6,7 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.find(params[:id])
-    @page_title = 'Company Details'
+    @page_title = @company.name
   end
 
   def new
@@ -28,6 +28,6 @@ class CompaniesController < ApplicationController
   private
 
   def company_params
-    params.require(:company).permit(:title, :body)
+    params.require(:company).permit(:name, :phone, :address, :email, :avatar)
   end
 end

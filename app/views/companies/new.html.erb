@@ -2,12 +2,10 @@
 
   <div class="form-container bg-white">
     <h3>Company</h3>
-
       <div class="form-floating mb-3 fs-6">
         <%= f.input_field :name, label: false, class: "form-control form-control-lg", id: "floatingInput", placeholder: "Name" %>
         <%= f.label :name %>
       </div>
-
   </div>
 
   <div class="form-container bg-white">
@@ -24,7 +22,6 @@
         <%= f.input_field :website, label: false, class: "form-control form-control-lg", id: "floatingInput", placeholder: "Website" %>
         <%= f.label :website %>
       </div>
-
       <div class="form-floating mb-3 fs-6">
         <%= f.input_field :phone, label: false, class: "form-control form-control-lg", id: "floatingInput", placeholder: "Phone" %>
         <%= f.label :phone %>
@@ -47,7 +44,6 @@
         <%= f.input_field :address, label: false, class: "form-control form-control-lg", id: "floatingInput", placeholder: "Address" %>
         <%= f.label :address %>
       </div>
-
       <%= f.input :avatar, as: :file, input_html: { class: "form-control form-control-lg fs-6" } %>
     </div>
   </div>
