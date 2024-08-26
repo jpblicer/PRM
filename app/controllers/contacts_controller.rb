@@ -24,7 +24,6 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     @contact.user = current_user
-
     # Attempt to save the contact first
     if @contact.save
       # If the contact has a business card attached, process it and redirect to the edit page
@@ -43,7 +42,7 @@ class ContactsController < ApplicationController
 
   def edit
     @contact = Contact.find(params[:id])
-    # @page_title = 'Edit Contact'
+    @page_title = 'Confirm Contact'
   end
 
   def update

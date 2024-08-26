@@ -9,12 +9,7 @@
 <div class="contact-info text-center">
   <h2><%= @contact.first_name if @contact.first_name %> <%= @contact.last_name if @contact.last_name %></h2>
   <h3>
-    <%# <% if @contact.company.avatar %>
-      <%# <%= image_tag(@contact.company.avatar, alt:"company-avatar", class: "contact-company-logo-small rounded-5 mx-2") %>
-    <%# <% else %>
-      <%# <i class="fa-regular fa-building"></i> %>
-    <%# <% end %>
-    <%= @contact.company.name if @contact.company.name %>
+    <%= @contact.company.name if @contact.company&.name %>
   </h3>
   <h4><%= @contact.job_title if @contact.job_title %></h4>
 </div>
