@@ -26,7 +26,6 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     @contact.user = current_user
-
     # Attempt to save the contact first
     if @contact.save
       # If the contact has a business card attached, process it and redirect to the edit page
@@ -45,13 +44,13 @@ class ContactsController < ApplicationController
 
   def edit
     @contact = Contact.find(params[:id])
-    # @page_title = 'Edit Contact'
+    @page_title = 'Confirm Contact'
   end
 
   def update
     @contact = Contact.find(params[:id])
     if @contact.update(contact_params)
-      redirect_to contact_path(@contact), notice: 'Contact was successfully created.'
+      redirect_to contact_path(@contact), notice: 'Contact was successfully updated.'
     else
       flash.now[:alert] = 'There was an issue updating the contact. Please review the form and try again.'
       render 'edit', status: :unprocessable_entity
