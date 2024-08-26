@@ -1,0 +1,9 @@
+<%= simple_form_for event, html: { data: { reset_form_target: 'form', action: "turbo:submit-end->reset-form#reset" } } do |f| %>
+  <%= f.input :name %>
+  <%= f.association :company, input_html: {data: {controller: "tom-select", tom_select_options_value: {tags: true}}} %>
+  <%= f.association :contacts, collection: @contact_names_collection, input_html: {multiple: true, data: {controller: "tom-select", tom_select_options_value: {tags: true}}} %>
+  <%= f.input :address %>
+  <%= f.input :start_date, label: 'Start Date', as: :date, html5: true, input_html: {min: Date.today + 1} %>
+  <%= f.input :end_date, label: 'End Date', as: :date, html5: true, input_html: {min: Date.today + 1} %>
+  <%= f.submit 'Submit', class: 'btn btn-primary mt-2' %>
+<% end %>

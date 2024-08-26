@@ -9,6 +9,8 @@ class ContactsController < ApplicationController
     @todo = Todo.new
     @note = Note.new
     @page_title = 'Contact Details'
+    @event = Event.new
+    @events = Event.where(id: @contact.events.pluck(:id))
   end
 
   def new
