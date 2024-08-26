@@ -18,7 +18,7 @@ class TodosController < ApplicationController
         # format.html { redirect_to batch_path(@batch) }
         format.turbo_stream do
           render turbo_stream: turbo_stream.replace(:todos, partial: "todos/todos",
-            locals: { contact: @todo.todoable })
+            locals: { contact: @todo.todoable, company: @todo.todoable })
         end
       end
     else
