@@ -1,0 +1,15 @@
+.icons-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 2rem;
+
+  a {
+    padding: 1rem;
+    border-radius: 1rem;
+
+    &:hover {
+      background-color: #dee2e6;
+    }
+  }
+}
