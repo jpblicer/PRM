@@ -1,7 +1,11 @@
-<%= simple_form_for(@contact) do |f| %>
+<%= simple_form_for(@contact, html: { id: "contact_form", class: "custom-form-class" }) do |f| %>
 
   <div class="form-container bg-white">
     <h3>Personal Info</h3>
+
+    <div class="mb-3">
+      <%= f.input :business_card, as: :file, label: 'Upload Business Card to auto populate fields', input_html: { class: 'form-control', id: 'contact_business_card' } %>
+    </div>
 
       <div class="form-floating mb-3 fs-6">
         <%= f.input_field :first_name, label: false, class: "form-control form-control-lg", id: "floatingInput", placeholder: "First Name" %>
