@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'contacts/show'
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -10,9 +9,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-
+  post 'contacts/extract_business_card', to: 'contacts#extract_business_card'
   resources :dashboard, only: [:index]
-  resources :contacts, except: [:destroy, :edit]
+  resources :contacts, except: [:destroy]
   resources :companies, except: [:destroy, :edit]
   resources :events, only: [:index, :new, :create]
   resources :todos, only: [:index, :new, :create, :update]
