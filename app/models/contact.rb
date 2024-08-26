@@ -5,6 +5,7 @@ class Contact < ApplicationRecord
   belongs_to :user
   has_many :todos, as: :todoable
   has_many :notes, as: :noteable
+  has_many :event_contacts
   has_many :events, through: :event_contacts
   has_one_attached :avatar
   has_one_attached :business_card
