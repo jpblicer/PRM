@@ -1,42 +1,47 @@
-<div class="container">
-  <h1>Company#show</h1>
-  <h1><%= @company.name %></h1>
-  <div>
+<div class="company-container">
+  <%= render 'companies/company_lg_avatar' %>
+</div>
 
-    <div>
-    <% if @company.avatar.key.nil? %>
-        <%= image_tag("company-default-avatar.jpeg", alt:"company-avatar", class: "avatar-large") %>
-      <% else %>
-        <%= cl_image_tag(@company.avatar.key, transformation: { width: 640, height: 640, crop: "fill" }, alt:"company-avatar", class: "avatar-large") %>
-    <% end %>
+<div class="list-container">
+  <div data-controller="reset-form">
+    <div class="d-flex justify-content-between align-items-center mt-3">
+      <h3>To Do's</h3>
+      <p>
+        <a class="btn btn-primary rounded-4 shadow" data-reset-form-target="btn" data-bs-toggle="collapse" href="#collapseTodo" role="button" aria-expanded="false" aria-controls="collapseExample">
+          <i class="fa-solid fa-plus" data-navigation-target="icon"></i>
+        </a>
+      </p>
     </div>
-
-    <div>
-      <% if @company.linkedin != "" %>
-        <a href="<% @company.linkedin %>" target="_blank"><i class="fa-brands fa-linkedin-in link-dark"></i></a>
-      <% end %>
-      <% if @company.website != "" %>
-        <a href="mailto:<% @company.website %>"><i class="fa-brands fa-chrome link-dark"></i></a>
-      <% end %>
-      <% if @company.phone != "" %>
-        <a href="tel:<% @company.phone %>"><i class="fa-solid fa-phone link-dark"></i></a>
-      <% end %>
+    <div class="collapse" id="collapseTodo">
+      <div class="card card-body bg-white rounded-4 shadow">
+        <%= render 'todos/todo_form', todo: @todo %>
+      </div>
     </div>
-  </div>
-
-  <div>
-    <h4>Details</h4>
-    <div>
-      <i class="fa-solid fa-location-pin"></i> <%= @company.address if @company.address %>
+    <div class="todo-container rounded-4" style="max-height: 24vh; overflow: scroll;">
+      <%= turbo_frame_tag :todos_list do %>
+        <%= render 'todos/todos_company', company: @company %>
+      <% end %>
     </div>
   </div>
 
-  <div>
-    <h3>To Do's</h3>
+  <div data-controller="reset-form">
+    <div class="d-flex justify-content-between align-items-center mt-3">
+      <h3>Notes</h3>
+      <p>
+        <a class="btn btn-primary rounded-4 shadow" data-reset-form-target="btn" data-bs-toggle="collapse" href="#collapseNote" role="button" aria-expanded="false" aria-controls="collapseExample">
+          <i class="fa-solid fa-plus" data-navigation-target="icon"></i>
+        </a>
+      </p>
+    </div>
+    <div class="collapse" id="collapseNote">
+      <div class="card card-body bg-white rounded-4 shadow">
+        <%= render 'notes/add_note' %>
+      </div>
+    </div>
+    <div class="notes-container rounded-4" style="max-height: 24vh; overflow: scroll;">
+      <%= turbo_frame_tag :notes_list do %>
+        <%= render 'notes/notes_company', company: @company %>
+      <% end %>
+    </div>
   </div>
-
-  <div>
-    <h3>Notes</h3>
-  </div>
-
 </div>

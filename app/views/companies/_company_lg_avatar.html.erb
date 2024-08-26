@@ -1,0 +1,26 @@
+<div class="avatar-large shadow-sm">
+  <% if @company.avatar.key.nil? %>
+      <%= image_tag("company-default-avatar.jpeg", alt:"company-avatar", class: "avatar-large") %>
+    <% else %>
+      <%= cl_image_tag(@company.avatar.key, transformation: { width: 640, height: 640, crop: "fill" }, alt:"company-avatar", class: "avatar-large") %>
+  <% end %>
+</div>
+
+<div class="company-info text-center">
+  <h2><%= @company.name if @company.name %></h2>
+  <h3><i class="fa-solid fa-location-pin"></i> <%= @company.address if @company.address %></h3>
+</div>
+
+<div class="icons-container flex-row justify-content-center mx-2">
+  <% if @company.linkedin != "" %>
+    <a href="<% @company.linkedin %>" target="_blank"><i class="fa-brands fa-linkedin-in text-primary"></i></a>
+  <% end %>
+
+  <% if @company.website != "" %>
+    <a href="<% @company.website %>"><i class="fa-solid fa-globe text-primary"></i></a>
+  <% end %>
+
+  <% if @company.phone != "" %>
+    <a href="tel:<% @company.phone %>"><i class="fa-solid fa-phone text-primary"></i></a>
+  <% end %>
+</div>
