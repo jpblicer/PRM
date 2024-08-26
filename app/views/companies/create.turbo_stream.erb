@@ -1,0 +1,3 @@
+<%= turbo_stream.append 'companies-select' do %>
+  <option value="<%= @company.id %>" data-tom-select-target="item"> <%= @company.name %> </option>
+<% end %>
