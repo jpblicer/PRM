@@ -2,8 +2,13 @@
   <h1>Company#show</h1>
   <h1><%= @company.name %></h1>
   <div>
-    <div class="avatar-large">
-      <%= image_tag @company.avatar, alt:"company-avatar", :class => "avatar-large" %>
+
+    <div>
+    <% if @company.avatar.key.nil? %>
+        <%= image_tag("company-default-avatar.jpeg", alt:"company-avatar", class: "avatar-large") %>
+      <% else %>
+        <%= cl_image_tag(@company.avatar.key, transformation: { width: 640, height: 640, crop: "fill" }, alt:"company-avatar", class: "avatar-large") %>
+    <% end %>
     </div>
 
     <div>
