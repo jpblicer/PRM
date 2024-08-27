@@ -1,6 +1,6 @@
 <ul class="list-group">
   <% @events.each do |event| %>
-    <div class="bg-white rounded-3 shadow-sm my-2 py-2 px-3 flex-column">
+    <div class="bg-white rounded-3 shadow-sm my-2 py-2 px-3 d-flex flex-column">
       <div class="event-details d-flex justify-content-between">
         <div class="event-name-address">
           <h2><strong><%= event.name %></strong></h2>
@@ -13,11 +13,21 @@
       </div>
       <% if event.contacts.any? %>
         <div class="collapse mt-2" id="collapseEvent<%= event.id %>">
-          <% event.contacts.each do |contact| %>
-            <h5><%= contact.first_name %> <%= contact.last_name %></h5>
-          <% end %>
+          <div class="d-flex flex-wrap"> <!-- Flex container for avatars -->
+            <% event.contacts.each do |contact| %>
+              <%= link_to contact_path(contact) do %>
+                <div class="recent-contact me-3"> <!-- Added margin-end for spacing -->
+                  <% if contact.avatar.attached? %>
+                    <%= cl_image_tag(contact.avatar.key, alt: "contact-avatar", class: "avatar rounded-circle border border-1 border-dark shadow", style:"width: 3rem; height: 3rem; object-fit: cover;", transformation: {gravity: "faces" }) %>
+                  <% else %>
+                    <%= image_tag("contact-default-avatar.png", alt: "contact-avatar", class: "avatar rounded-circle border border-1 border-dark shadow", style:"width: 3rem; height: 3rem") %>
+                  <% end %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
         </div>
-        <div class="expand d-flex justify-content-center mt-3"> <!-- Added mt-3 for spacing -->
+        <div class="expand d-flex justify-content-center mt-3">
           <h2 data-controller="toggle-arrow">
             <a data-bs-toggle="collapse" href="#collapseEvent<%= event.id %>" role="button" aria-expanded="false" aria-controls="collapseEvent<%= event.id %>" data-action="click->toggle-arrow#toggle">
               <i class="fa-solid fa-chevron-down" data-toggle-arrow-target="icon"></i>

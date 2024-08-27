@@ -14,7 +14,7 @@
       <% if event.contacts.any? %>
         <div class="collapse mt-2" id="collapseEvent<%= event.id %>">
           <% event.contacts.each do |contact| %>
-            <h5><%= contact.first_name %> <%= contact.last_name %></h5>
+            <%# <h5><%= contact.first_name %> <%#= contact.last_name</h5> %>
           <% end %>
         </div>
         <div class="expand d-flex justify-content-center mt-3"> <!-- Added mt-3 for spacing -->
