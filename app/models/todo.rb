@@ -6,4 +6,10 @@ class Todo < ApplicationRecord
   validates :name, presence: true
   validates :end_date, presence: true
   validates_comparison_of :end_date, greater_than: Date.today
+
+  # scopes
+  scope :pending, -> { where(status: false).where('end_date >= ?', Date.today) }
+  scope :overdue, -> { where(status: false).where('end_date < ?', Date.today) }
+  scope :completed, -> { where(status: true) }
+  scope :all_todos, -> { all }
 end
