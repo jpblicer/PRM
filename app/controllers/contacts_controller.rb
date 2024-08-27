@@ -26,17 +26,22 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     @contact.user = current_user
-    # Attempt to save the contact first
+
     if @contact.save
-      # If the contact has a business card attached, process it and redirect to the edit page
       if @contact.business_card.attached?
-        @contact.extract_info_from_business_card
-        redirect_to edit_contact_path(@contact), alert: 'Optional: Input missing fields manually'
+        # Attempt to extract data from the business card
+        if @contact.extract_info_from_business_card
+          redirect_to edit_contact_path(@contact), alert: 'Optional: Input missing fields manually'
+        else
+          # If extraction fails, delete the contact and show an error
+          @contact.destroy
+          flash.now[:alert] = 'Failed to extract data from the business card. Please try again.'
+          render 'new', status: :unprocessable_entity
+        end
       else
         redirect_to contact_path(@contact), notice: 'Contact was successfully created.'
       end
     else
-      # Handle validation errors or other issues with saving
       flash.now[:alert] = 'There was an issue creating the contact. Please review the form and try again.'
       render 'new', status: :unprocessable_entity
     end
