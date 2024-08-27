@@ -36,6 +36,8 @@
   <% end %>
 
   <% if @contact.phone != "" %>
-    <a href="tel:<% @contact.phone %>"><i class="fa-solid fa-phone text-primary"></i></a>
+    <%= phone_to @contact.phone do %>
+      <i class="fa-solid fa-phone text-primary"></i>
+    <% end %>
   <% end %>
 </div>
