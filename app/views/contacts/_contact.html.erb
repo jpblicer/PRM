@@ -8,9 +8,16 @@
 
 <div class="contact-info text-center">
   <h2><%= @contact.first_name if @contact.first_name %> <%= @contact.last_name if @contact.last_name %></h2>
-  <h3>
-    <%= @contact.company.name if @contact.company&.name %>
-  </h3>
+  <%= link_to company_path(@contact.company) do %>
+    <div class="contact-company-container d-flex align-items-center gap-1">
+      <% if @contact.company.avatar.key.nil? %>
+        <%= image_tag("company-default-avatar.jpeg", alt:"company-avatar", style: "height: 3rem; width:3rem;", class: "rounded-circle") %>
+          <% else %>
+        <%= cl_image_tag(@contact.company.avatar.key, transformation: { width: 640, height: 640, crop: "fill" }, alt:"company-avatar", style: "height: 6rem; width: 6rem;", class: "rounded-4") %>
+      <% end %>
+      <h3><%= @contact.company.name if @contact.company&.name %></h3>
+    </div>
+  <% end %>
   <h4><%= @contact.job_title if @contact.job_title %></h4>
 </div>
 
