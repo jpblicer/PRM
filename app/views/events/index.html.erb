@@ -1,6 +1,6 @@
 <ul class="list-group">
   <% @events.each do |event| %>
-    <div class="bg-white rounded-3 shadow-sm my-2 py-2 px-3">
+    <div class="bg-white rounded-3 shadow-sm my-2 py-2 px-3 flex-column">
       <div class="event-details d-flex justify-content-between">
         <div class="event-name-address">
           <h2><strong><%= event.name %></strong></h2>
@@ -12,17 +12,17 @@
         </div>
       </div>
       <% if event.contacts.any? %>
-        <div class="expand d-flex justify-content-center">
+        <div class="collapse mt-2" id="collapseEvent<%= event.id %>">
+          <% event.contacts.each do |contact| %>
+            <h5><%= contact.first_name %> <%= contact.last_name %></h5>
+          <% end %>
+        </div>
+        <div class="expand d-flex justify-content-center mt-3"> <!-- Added mt-3 for spacing -->
           <h2 data-controller="toggle-arrow">
             <a data-bs-toggle="collapse" href="#collapseEvent<%= event.id %>" role="button" aria-expanded="false" aria-controls="collapseEvent<%= event.id %>" data-action="click->toggle-arrow#toggle">
               <i class="fa-solid fa-chevron-down" data-toggle-arrow-target="icon"></i>
             </a>
           </h2>
-        </div>
-        <div class="collapse" id="collapseEvent<%= event.id %>">
-          <% event.contacts.each do |contact| %>
-            <h5><%= contact.first_name %> <%= contact.last_name %></h5>
-          <% end %>
         </div>
       <% end %>
     </div>
