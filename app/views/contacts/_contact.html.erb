@@ -23,7 +23,10 @@
 
 <div class="icons-container flex-row justify-content-center mx-2">
   <% if @contact.linkedin != "" %>
-    <a href="<% @contact.linkedin %>" target="_blank"><i class="fa-brands fa-linkedin-in text-primary"></i></a>
+
+    <%= link_to URI::HTTP.build(host: "#{@contact.linkedin}").to_s, target: "_blank" do %>
+      <i class="fa-brands fa-linkedin-in text-primary"></i>
+    <% end %>
   <% end %>
 
   <% if @contact.email != "" %>
