@@ -1,2 +1,36 @@
+<div class="upcoming-container">
 
-<%= render 'todos/todo_upcoming' %>
+
+  <div class="btn-group p-2 d-flex justify-content-center gap-3 my-3" role="group">
+
+    <%= link_to "Pending", todos_path(filter: 'pending'), class:"btn btn-outline-primary btn-lg todo-status-button" %>
+    <%= link_to "Overdue", todos_path(filter: 'overdue'), class:"btn btn-outline-warning btn-lg todo-status-button" %>
+    <%= link_to "Completed", todos_path(filter: 'completed'), class:"btn btn-outline-success btn-lg todo-status-button" %>
+    <%= link_to "All", todos_path(filter: 'all'), class:"btn btn-outline-secondary btn-lg todo-status-button" %>
+
+  </div>
+
+  <div class="upcoming-list-container rounded-4 shadow " style="max-height: 70vh; overflow: auto;">
+    <ul class="list-group bg-white  rounded-4 p-4">
+      <% @todos.each do |todo| %>
+        <% if todo.todoable_type == "Contact" %>
+          <%= link_to contact_path(todo.todoable) do %>
+            <%# Rendering to do's attached to a contact %>
+            <%= render 'todos/todo_upcoming', todo: todo %>
+          <% end %>
+
+        <% elsif todo.todoable_type == "Company" %>
+          <%= link_to company_path(todo.todoable) do %>
+          <%# Rendering to do's attached to a company %>
+          <%= render 'todos/todo_upcoming', todo: todo %>
+        <% end %>
+
+         <% else%>
+          <%# Rendering all remaining to do's %>
+          <%= render 'todos/todo_upcoming', todo: todo %>
+        <% end %>
+      <% end %>
+
+    </ul>
+  </div>
+</div>

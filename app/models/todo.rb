@@ -8,8 +8,8 @@ class Todo < ApplicationRecord
   validates_comparison_of :end_date, greater_than: Date.today
 
   # scopes
-  scope :pending, -> { where(status: false).where('end_date >= ?', Date.today) }
-  scope :overdue, -> { where(status: false).where('end_date < ?', Date.today) }
-  scope :completed, -> { where(status: true) }
+  scope :pending, -> { where(status: ["in_progress", "not_started"]).where('end_date >= ?', Date.today) }
+  scope :overdue, -> { where(status: ["in_progress", "not_started"]).where('end_date < ?', Date.today) }
+  scope :completed, -> { where(status: "done") }
   scope :all_todos, -> { all }
 end
