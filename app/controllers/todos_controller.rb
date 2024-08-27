@@ -1,4 +1,19 @@
 class TodosController < ApplicationController
+  def index
+    # @todos = Todo.all
+    @todos = case params[:filter]
+    when 'pending'
+      Todo.pending
+    when 'overdue'
+      Todo.overdue
+    when 'completed'
+      Todo.completed
+    else
+      Todo.all_todos
+    end
+    @page_title = "To Do's"
+  end
+
   def new
     @todo = Todo.new
     @page_title = 'New To Do'
