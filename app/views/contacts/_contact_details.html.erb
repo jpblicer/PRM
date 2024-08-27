@@ -1,24 +1,38 @@
-<div class='details'>
+<% if @contact.company %>
+  <div class='details'>
     <i class="fa-regular fa-building"></i>
-    <p><%= @contact.company.name if @contact.company %></p>
-</div>
+    <p><%= @contact.company.name %></p>
+  </div>
+<% end %>
 
-<div class='details'>
-  <i class="fa-solid fa-location-pin"></i>
-  <p><%= @contact.country if @contact.country %><%= ", " if @contact.country != "" && @contact.address != "" %><%= @contact.address if @contact.address %></p>
-</div>
+<% if @contact.country.present? || @contact.address.present? %>
+  <div class='details'>
+    <i class="fa-solid fa-location-pin"></i>
+    <p>
+      <%= @contact.country if @contact.country.present? %>
+      <%= ", " if @contact.country.present? && @contact.address.present? %>
+      <%= @contact.address if @contact.address.present? %>
+    </p>
+  </div>
+<% end %>
 
-<div class='details'>
-  <i class="fa-solid fa-cake-candles"></i>
-  <p><%= @contact.birthday if @contact.birthday %></p>
-</div>
+<% if @contact.birthday %>
+  <div class='details'>
+    <i class="fa-solid fa-cake-candles"></i>
+    <p><%= @contact.birthday %></p>
+  </div>
+<% end %>
 
-<div class='details'>
-  <i class="fa-solid fa-phone"></i>
-  <p><%= @contact.phone if @contact.phone %></p>
-</div>
+<% if @contact.phone %>
+  <div class='details'>
+    <i class="fa-solid fa-phone"></i>
+    <p><%= @contact.phone %></p>
+  </div>
+<% end %>
 
-<div class='details'>
-  <i class="fa-regular fa-envelope"></i>
-  <p><%= @contact.email if @contact.email %></p>
-</div>
+<% if @contact.email %>
+  <div class='details'>
+    <i class="fa-regular fa-envelope"></i>
+    <p><%= @contact.email %></p>
+  </div>
+<% end %>
