@@ -16,6 +16,24 @@
 <div class="list-container">
   <div data-controller="reset-form">
     <div class="d-flex justify-content-between align-items-center mt-3">
+      <h3>Assign Contact to Event</h3>
+      <p>
+        <a class="btn btn-primary rounded-4 shadow" data-reset-form-target="btn" data-bs-toggle="collapse" href="#collapseAssign" role="button" aria-expanded="false" aria-controls="collapseExample">
+          <i class="fa-solid fa-plus" data-navigation-target="icon"></i>
+        </a>
+      </p>
+    </div>
+    <div class="collapse" id="collapseAssign">
+      <div class="card card-body bg-white rounded-4 shadow">
+        <%= render 'contacts/assign_contact_form' %>
+      </div>
+    </div>
+</div>
+
+
+<div class="list-container">
+  <div data-controller="reset-form">
+    <div class="d-flex justify-content-between align-items-center mt-3">
       <h3>To Do's</h3>
       <p>
         <a class="btn btn-primary rounded-4 shadow" data-reset-form-target="btn" data-bs-toggle="collapse" href="#collapseTodo" role="button" aria-expanded="false" aria-controls="collapseExample">

@@ -1,0 +1,30 @@
+<div class="upcoming-container">
+  <div class="btn-group p-2 d-flex justify-content-center gap-3 my-3" role="group">
+
+    <%= link_to "All", todos_path(filter: 'all'), class:"btn btn-outline-secondary btn-lg todo-status-button" %>
+    <%= link_to "Pending", todos_path(filter: 'pending'), class:"btn btn-outline-primary btn-lg todo-status-button" %>
+    <%= link_to "Overdue", todos_path(filter: 'overdue'), class:"btn btn-outline-warning btn-lg todo-status-button" %>
+    <%= link_to "Completed", todos_path(filter: 'completed'), class:"btn btn-outline-success btn-lg todo-status-button" %>
+  </div>
+
+  <div class="upcoming-list-container rounded-4 shadow " style="max-height: 70vh; overflow: auto;">
+    <ul class="list-group bg-white  rounded-4 p-4">
+      <% @todos.each do |todo| %>
+        <li class="list-item card py-2 my-2 rounded-4" style="background: #F5F5FA;">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="card-left ps-4 d-flex">
+                <i style="font-size: 2rem; color: #7ce7ac" class="card d-flex align-items-center justify-content-center fa-solid fa-clipboard-list px-4 me-2 bg-white rounded-4"></i>
+              <div class="card-left-content">
+                <h4><strong><%= todo.name %></strong></h4>
+                <h5>status: <%= todo.status %></h5>
+              </div>
+            </div>
+            <div class="card-left pe-4">
+              <h4 class="border p-2 rounded-pill bg-white"><%= todo.end_date %></h4>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

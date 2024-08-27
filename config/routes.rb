@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'event_contacts/create'
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -13,8 +14,9 @@ Rails.application.routes.draw do
   resources :dashboard, only: [:index]
   resources :contacts, except: [:destroy]
   resources :companies, except: [:destroy, :edit]
-  resources :events, only: [:index, :new, :create]
+  resources :events, only: [:index, :new, :create, :show]
   resources :todos, only: [:index, :new, :create, :update]
   resources :notes, only: [:create]
+  resources :event_contacts, only: [:create]
 
 end
