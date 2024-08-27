@@ -1,0 +1,13 @@
+<div class="icons-container flex-row justify-content-end">
+  <% if company.linkedin != "" %>
+    <a href="<% company.linkedin %>" target="_blank"><i class="fa-brands fa-linkedin-in text-primary"></i></a>
+  <% end %>
+
+  <% if company.website != "" %>
+    <a href="<% company.website %>"><i class="fa-solid fa-globe text-primary"></i></a>
+  <% end %>
+
+  <% if company.phone != "" %>
+    <a href="tel:<% company.phone %>"><i class="fa-solid fa-phone text-primary"></i></a>
+  <% end %>
+</div>
