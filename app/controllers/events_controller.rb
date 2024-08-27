@@ -2,6 +2,14 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.where('end_date >= ?', Date.today).order(start_date: :asc)
+    @events = case params[:filter]
+              when 'upcoming'
+                Event.where('end_date >= ?', Date.today).order(start_date: :asc)
+              when 'past'
+                Event.where('end_date <= ?', Date.today).order(start_date: :asc)
+              else
+                Event.all
+              end
     @page_title = 'Events'
   end
 
