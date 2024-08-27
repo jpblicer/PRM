@@ -28,6 +28,11 @@
         <%= render 'contacts/assign_contact_form' %>
       </div>
     </div>
+    <div class="event-container rounded-4" style="max-height: 24vh; overflow: scroll;">
+      <%= turbo_frame_tag :events_list do %>
+        <%= render 'events/events', contact: @contact %>
+      <% end %>
+    </div>
 </div>
 
 
