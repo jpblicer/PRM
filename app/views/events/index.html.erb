@@ -1,22 +1,30 @@
-<% @events.each do |event| %>
-  <div class="event-card">
-    <div class="event-details">
-      <h3><%= event.name %></h3>
-      <p><%= event.address %></p>
-
+<ul class="list-group">
+  <% @events.each do |event| %>
+    <div class="bg-white rounded-3 shadow-sm my-2 py-2 px-3 flex-column">
+      <div class="event-details d-flex justify-content-between">
+        <div class="event-name-address">
+          <h2><strong><%= event.name %></strong></h2>
+          <h5><%= event.address %></h5>
+        </div>
+        <div class="event-date">
+          <h5><%= event.start_date %></h5>
+          <h5><%= event.end_date %></h5>
+        </div>
+      </div>
       <% if event.contacts.any? %>
-        <h3>Contacts:</h3>
-        <ul class='contact-list'>
+        <div class="collapse mt-2" id="collapseEvent<%= event.id %>">
           <% event.contacts.each do |contact| %>
-            <li class='contact-list-item'><%= "#{contact.first_name} #{contact.last_name}" %></li>
+            <h5><%= contact.first_name %> <%= contact.last_name %></h5>
           <% end %>
-        </ul>
+        </div>
+        <div class="expand d-flex justify-content-center mt-3"> <!-- Added mt-3 for spacing -->
+          <h2 data-controller="toggle-arrow">
+            <a data-bs-toggle="collapse" href="#collapseEvent<%= event.id %>" role="button" aria-expanded="false" aria-controls="collapseEvent<%= event.id %>" data-action="click->toggle-arrow#toggle">
+              <i class="fa-solid fa-chevron-down" data-toggle-arrow-target="icon"></i>
+            </a>
+          </h2>
+        </div>
       <% end %>
     </div>
-
-    <div class="event-date">
-      <p><%= event.start_date %></p>
-      <p><%= event.end_date %></p>
-    </div>
-  </div>
-<% end %>
+  <% end %>
+</ul>
