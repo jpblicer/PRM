@@ -3,10 +3,20 @@
     <div class="event-details">
       <h3><%= event.name %></h3>
       <p><%= event.address %></p>
+
+      <% if event.contacts.any? %>
+        <h3>Contacts:</h3>
+        <ul class='contact-list'>
+          <% event.contacts.each do |contact| %>
+            <li class='contact-list-item'><%= "#{contact.first_name} #{contact.last_name}" %></li>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
+
     <div class="event-date">
       <p><%= event.start_date %></p>
       <p><%= event.end_date %></p>
     </div>
-</div>
+  </div>
 <% end %>

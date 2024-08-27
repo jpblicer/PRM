@@ -1,10 +1,15 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.all
     @events = Event.where('end_date >= ?', Date.today).order(start_date: :asc)
     @page_title = 'Events'
   end
+
+  # def show
+  #   @event = Event.find(params[:id])
+  #   @contacts = @event.contacts
+  #   @page_title = @event.name
+  # end
 
   def new
     @event = Event.new
