@@ -1,13 +1,10 @@
 <div class="upcoming-container">
 
-
   <div class="btn-group p-2 d-flex justify-content-center gap-3 my-3" role="group">
-
-    <%= link_to "Pending", todos_path(filter: 'pending'), class:"btn btn-outline-primary btn-lg todo-status-button" %>
-    <%= link_to "Overdue", todos_path(filter: 'overdue'), class:"btn btn-outline-warning btn-lg todo-status-button" %>
-    <%= link_to "Completed", todos_path(filter: 'completed'), class:"btn btn-outline-success btn-lg todo-status-button" %>
-    <%= link_to "All", todos_path(filter: 'all'), class:"btn btn-outline-secondary btn-lg todo-status-button" %>
-
+    <%= link_to "Pending", todos_path(filter: 'pending'), class:"btn btn-outline-dark btn-lg rounded-3 todo-status-button-pending #{ @filter == 'pending' ? 'todo-status-button-pending-active' : ''}" %>
+    <%= link_to "Overdue", todos_path(filter: 'overdue'), class:"btn btn-outline-info btn-lg rounded-3 todo-status-button-overdue #{ @filter == 'overdue' ? 'todo-status-button-overdue-active' : ''}" %>
+    <%= link_to "Completed", todos_path(filter: 'completed'), class:"btn btn-outline-success btn-lg rounded-3 todo-status-button-completed #{ @filter == 'completed' ? 'todo-status-button-completed-active' : ''}" %>
+    <%= link_to "All", todos_path(filter: 'all'), class:"btn btn-outline-dark btn-lg rounded-3 todo-status-button-all #{ @filter == 'all' ? 'todo-status-button-all-active' : ''}" %>
   </div>
 
   <div class="upcoming-list-container rounded-4 shadow " style="max-height: 70vh; overflow: auto;">
