@@ -4,19 +4,19 @@
     <%= link_to "Pending", todos_path(filter: 'pending'), class:"btn btn-outline-dark btn-lg rounded-3 todo-status-button-pending #{ @filter == 'pending' ? 'todo-status-button-pending-active' : ''}" %>
     <%= link_to "Overdue", todos_path(filter: 'overdue'), class:"btn btn-outline-info btn-lg rounded-3 todo-status-button-overdue #{ @filter == 'overdue' ? 'todo-status-button-overdue-active' : ''}" %>
     <%= link_to "Completed", todos_path(filter: 'completed'), class:"btn btn-outline-success btn-lg rounded-3 todo-status-button-completed #{ @filter == 'completed' ? 'todo-status-button-completed-active' : ''}" %>
-    <%= link_to "All", todos_path(filter: 'all'), class:"btn btn-outline-dark btn-lg rounded-3 todo-status-button-all #{ @filter == 'all' ? 'todo-status-button-all-active' : ''}" %>
+    <%= link_to "All", todos_path(filter: 'all'), class:"btn btn-outline-dark btn-lg rounded-3 todo-status-button-all #{ @filter == 'all_todos' ? 'todo-status-button-all-active' : ''}" %>
   </div>
 
   <div class="upcoming-list-container rounded-4 shadow " style="max-height: 70vh; overflow: auto;">
     <ul class="list-group bg-white  rounded-4 p-4">
       <% @todos.each do |todo| %>
-        <% if todo.todoable_type == "Contact" %>
+        <% if todo.todoable_type == "Contact" && todo.todoable %>
           <%= link_to contact_path(todo.todoable) do %>
             <%# Rendering to do's attached to a contact %>
             <%= render 'todos/todo_upcoming', todo: todo %>
           <% end %>
 
-        <% elsif todo.todoable_type == "Company" %>
+        <% elsif todo.todoable_type == "Company" && todo.todoable %>
           <%= link_to company_path(todo.todoable) do %>
           <%# Rendering to do's attached to a company %>
           <%= render 'todos/todo_upcoming', todo: todo %>
