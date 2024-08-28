@@ -6,7 +6,7 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.find(params[:id])
-    @page_title = @company.name
+    @page_title = "Company"
     @todo = Todo.new
     @note = Note.new
   end
