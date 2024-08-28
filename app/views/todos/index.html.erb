@@ -1,5 +1,4 @@
 <div class="upcoming-container">
-
   <div class="btn-group p-2 d-flex justify-content-center gap-3 my-3" role="group">
     <%= link_to "Pending", todos_path(filter: 'pending'), class:"btn btn-outline-dark btn-lg rounded-3 todo-status-button-pending #{ @filter == 'pending' ? 'todo-status-button-pending-active' : ''}" %>
     <%= link_to "Overdue", todos_path(filter: 'overdue'), class:"btn btn-outline-info btn-lg rounded-3 todo-status-button-overdue #{ @filter == 'overdue' ? 'todo-status-button-overdue-active' : ''}" %>

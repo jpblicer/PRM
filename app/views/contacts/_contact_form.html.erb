@@ -10,10 +10,6 @@
       </div>
     <% end %>
 
-    <div class="mb-3">
-      <%= f.input :avatar, as: :file, input_html: { class: "form-control form-control-lg fs-6" } %>
-    </div>
-
       <div class="form-floating mb-3 fs-6">
         <%= f.input_field :first_name, label: false, class: "form-control form-control-lg", id: "floatingInput", placeholder: "First Name" %>
         <%= f.label :first_name %>
@@ -63,6 +59,7 @@
   <div class="form-container bg-white">
     <div class="d-flex justify-content-between align-items-center mt-3">
       <h3>Details</h3>
+
       <p>
         <a class="btn btn-primary rounded-4" data-reset-form-target="btn" data-bs-toggle="collapse" href="#collapseDetails" role="button" aria-expanded="false" aria-controls="collapseExample">
           <i class="fa-solid fa-chevron-down" data-navigation-target="icon"></i>
@@ -79,6 +76,10 @@
         <div class="form-floating mb-3 fs-6">
         <%= f.input_field :country, as: :string, label: false, class: "form-control form-control-lg", id: "floatingInput", placeholder: "Country" %>
         <%= f.label :country %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.input :avatar, as: :file, input_html: { class: "form-control form-control-lg fs-6" } %>
       </div>
 
         <%= f.input :birthday, as: :date, html5: true, input_html: { class: "form-control form-control-lg fs-6" } %>
