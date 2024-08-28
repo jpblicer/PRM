@@ -1,7 +1,7 @@
 <div class="container">
   <div class="btn-group p-2 d-flex justify-content-between gap-3 my-3" role="group">
-    <%= link_to "Upcoming", events_path(filter: 'upcoming'), class:"btn btn-outline-dark btn-lg rounded-3 todo-status-button-pending #{ @filter == 'pending' ? 'todo-status-button-pending-active' : ''}" %>
-    <%= link_to "Past", events_path(filter: 'past'), class:"btn btn-outline-info btn-lg rounded-3 todo-status-button-overdue #{ @filter == 'overdue' ? 'todo-status-button-overdue-active' : ''}" %>
-    <%= link_to "All", events_path(filter: 'all'), class:"btn btn-outline-dark btn-lg rounded-3 todo-status-button-all #{ @filter == 'all' ? 'todo-status-button-all-active' : ''}" %>
+    <%= link_to "Upcoming", events_path(filter: 'upcoming'), class:"btn btn-outline-dark btn-lg rounded-3 todo-status-button-completed  w-100 #{ @filter == 'upcoming' ? 'todo-status-button-completed-active' : ''}" %>
+    <%= link_to "Past", events_path(filter: 'past'), class:"btn btn-outline-info btn-lg rounded-3 todo-status-button-overdue w-100 #{ @filter == 'past' ? 'todo-status-button-overdue-active' : ''}" %>
+    <%= link_to "All", events_path(filter: 'all'), class:"btn btn-outline-dark btn-lg rounded-3 todo-status-button-all w-100 #{ @filter == 'all' ? 'todo-status-button-all-active' : ''}" %>
   </div>
 </div>
