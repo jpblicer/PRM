@@ -1,3 +1,43 @@
-.todo-status-button:toggle {
-  background-color: lightblue;
+.todo-status-button-pending {
+  color: #112d50;
+  border: solid 2px #112d50;
+}
+
+.todo-status-button-pending-active {
+  background-color: #112d50;
+  color: white;
+  border: solid 2px #112d50;
+}
+
+.todo-status-button-overdue {
+  color: #ffa845;
+  border: solid 2px #ffa845;
+}
+
+.todo-status-button-overdue-active {
+  background-color: #112d50;
+  color: white;
+  border: solid 2px #112d50;
+}
+
+.todo-status-button-completed {
+  color: #22dc88;
+  border: solid 2px #22dc88;
+}
+
+.todo-status-button-completed-active {
+  background-color: #112d50;
+  color: white;
+  border: solid 2px #112d50;
+}
+
+.todo-status-button-all {
+  color: #112d50;
+  border: solid 2px #112d50;
+}
+
+.todo-status-button-all-active {
+  background-color: #112d50;
+  color: white;
+  border: solid 2px #112d50;
 }

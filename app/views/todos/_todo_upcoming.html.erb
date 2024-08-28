@@ -1,30 +1,34 @@
-<div class="upcoming-container">
-  <div class="btn-group p-2 d-flex justify-content-center gap-3 my-3" role="group">
+<li class="list-item card py-2  my-2 rounded-4" style="background: #F5F5FA;">
+  <div class="d-flex justify-content-between align-items-center">
+    <div class="card-left ps-2 d-flex">
+        <i style="font-size: 2rem; color: #7ce7ac; min-height: 4rem" class="card d-flex align-items-center justify-content-center fa-solid fa-clipboard-list px-4 me-2 bg-white rounded-4"></i>
+      <div class="card-left-conten pl-2 align-self-center">
+        <h4><strong><%= todo.name %></strong></h4>
 
-    <%= link_to "All", todos_path(filter: 'all'), class:"btn btn-outline-secondary btn-lg todo-status-button" %>
-    <%= link_to "Pending", todos_path(filter: 'pending'), class:"btn btn-outline-primary btn-lg todo-status-button" %>
-    <%= link_to "Overdue", todos_path(filter: 'overdue'), class:"btn btn-outline-warning btn-lg todo-status-button" %>
-    <%= link_to "Completed", todos_path(filter: 'completed'), class:"btn btn-outline-success btn-lg todo-status-button" %>
-  </div>
 
-  <div class="upcoming-list-container rounded-4 shadow " style="max-height: 70vh; overflow: auto;">
-    <ul class="list-group bg-white  rounded-4 p-4">
-      <% @todos.each do |todo| %>
-        <li class="list-item card py-2 my-2 rounded-4" style="background: #F5F5FA;">
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="card-left ps-4 d-flex">
-                <i style="font-size: 2rem; color: #7ce7ac" class="card d-flex align-items-center justify-content-center fa-solid fa-clipboard-list px-4 me-2 bg-white rounded-4"></i>
-              <div class="card-left-content">
-                <h4><strong><%= todo.name %></strong></h4>
-                <h5>status: <%= todo.status %></h5>
-              </div>
-            </div>
-            <div class="card-left pe-4">
-              <h4 class="border p-2 rounded-pill bg-white"><%= todo.end_date %></h4>
-            </div>
-          </div>
-        </li>
-      <% end %>
-    </ul>
+        <%# Logic to display username and/or company name %>
+        <% if todo.todoable_type == "Contact" %>
+          <h5>Contact:
+            <%= todo.todoable.first_name if todo.todoable.first_name != nil %>
+            <%= todo.todoable.last_name if todo.todoable.last_name != nil %>
+          </h5>
+        <% end %>
+        <% if todo.todoable_type == "Company" %>
+          <h5>Company: <%= todo.todoable.name if todo.todoable.name != nil %></h5>
+        <% end %>
+
+      </div>
+    </div>
+
+    <div class="card-left pe-2">
+      <div class="checkbox-right-container d-flex flex-column">
+        <h4 class="border p-3 rounded-pill bg-white m-0 align-self-center"><%= todo.end_date.strftime("%m/%d") %></h4>
+        <div class="checkbox-right d-flex justify-content-end pe-1 pt-1">
+          <input class="form-check-input-xl" type="checkbox" value="" id="flexCheckDefault">
+        </div>
+      </div>
+
+
+    </div>
   </div>
-</div>
+</li>
