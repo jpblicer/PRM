@@ -10,10 +10,12 @@
 
   <%= link_to root_path, class: "bottom-navigation-item" do %>
     <i class="fa-solid fa-house link-dark position-relative">
-      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger fs-6">
-        <%= current_user.notification_count %>
-        <span class="visually-hidden">unread messages</span>
-      </span>
+      <% if current_user %>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger fs-6">
+          <%= current_user.notification_count %>
+          <span class="visually-hidden">unread messages</span>
+        </span>
+      <% end %>
     </i>
   <% end %>
 
