@@ -53,7 +53,7 @@
     </div>
     <div class="todo-container rounded-4" style="max-height: 24vh; overflow: scroll;">
       <%= turbo_frame_tag :todos_list do %>
-        <%= render 'todos/todos', contact: @contact %>
+        <%= render 'todos/todos', todos: @contact.todos %>
       <% end %>
     </div>
   </div>
