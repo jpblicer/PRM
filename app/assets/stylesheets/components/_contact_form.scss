@@ -5,7 +5,17 @@
   border-right: #f4f4f4 !important;
   border-radius: 0 !important;
 }
+.ts-dropdown .option {
+  font-size: 2rem; /* Adjust this to your desired font size */
+}
 
+#companies-select-ts-control {
+  font-size: 2rem;
+}
+
+.tom-select-dropdown .option.active {
+  font-weight: bold; /* Optionally, make the selected option bold */
+}
 .form-container{
   border: 1px solid #cdcdcd  ;
   border-radius: 4px;
