@@ -9,6 +9,8 @@ class TodosController < ApplicationController
       Todo.overdue.order(end_date: :asc)
     when 'completed'
       Todo.completed.order(end_date: :asc)
+    when 'all_todos'
+      Todo.all_todos.order(end_date: :asc)
     else
       Todo.all_todos.order(end_date: :asc)
     end
