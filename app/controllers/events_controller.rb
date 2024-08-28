@@ -30,6 +30,25 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user = current_user
 
+    if @event.save
+      if @event.event_image.attached?
+        # Attempt to extract data from the event image
+        if @event.extract_info_from_event_image
+          redirect_to edit_event_path(@event)
+        else
+          # If extraction fails, delete the event and show an error
+          @event.destroy
+          flash.now[:alert] = 'Failed to extract data from the business card. Please try again.'
+          render turbo_stream: turbo_stream.replace(:new_event, partial: "events/new", locals: { event: @event }), status: :unprocessable_entity
+        end
+      else
+        redirect_to events_path, notice: 'Event was successfully created.'
+      end
+    else
+      flash.now[:alert] = 'There was an issue creating the event. Please review the form and try again.'
+      render turbo_stream: turbo_stream.replace(:new_event, partial: "events/new", locals: { event: @event }), status: :unprocessable_entity
+    end
+
     # if @event.save
     #   redirect_to events_path
 
@@ -38,25 +57,24 @@ class EventsController < ApplicationController
     #     locals: { event: @event })
     # end
 
-
-    if @event.save
-      if @event.event_image.attached?
-        # Attempt to extract data from the business card
-        if @event.extract_info_from_event_image
-          redirect_to edit_event_path(@event)
-        else
-          # If extraction fails, delete the event and show an error
-          @event.destroy
-          flash.now[:alert] = 'Failed to extract data from the business card. Please try again.'
-          render 'new', status: :unprocessable_entity
-        end
-      else
-        redirect_to events_path, notice: 'Event was successfully created.'
-      end
-    else
-      flash.now[:alert] = 'There was an issue creating the event. Please review the form and try again.'
-      render 'new', status: :unprocessable_entity
-    end
+    # if @event.save
+    #   if @event.event_image.attached?
+    #     # Attempt to extract data from the business card
+    #     if @event.extract_info_from_event_image
+    #       redirect_to edit_event_path(@event)
+    #     else
+    #       # If extraction fails, delete the event and show an error
+    #       @event.destroy
+    #       flash.now[:alert] = 'Failed to extract data from the business card. Please try again.'
+    #       render 'new', status: :unprocessable_entity
+    #     end
+    #   else
+    #     redirect_to events_path, notice: 'Event was successfully created.'
+    #   end
+    # else
+    #   flash.now[:alert] = 'There was an issue creating the event. Please review the form and try again.'
+    #   render 'new', status: :unprocessable_entity
+    # end
 
   end
 
