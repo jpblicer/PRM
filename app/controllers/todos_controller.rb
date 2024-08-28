@@ -33,10 +33,17 @@ class TodosController < ApplicationController
     if @todo.save
       # redirect_to @todo
       respond_to do |format|
-        # format.html { redirect_to batch_path(@batch) }
-        format.turbo_stream do
-          render turbo_stream: turbo_stream.replace(:todos, partial: "todos/todos",
-            locals: { contact: @todo.todoable, company: @todo.todoable })
+        if @todo.todoable.present?
+          format.turbo_stream do
+            render turbo_stream: turbo_stream.replace(
+              :todos,
+              partial: "todos/todos",
+              locals: { todos: @todo.todoable.todos }
+            )
+          end
+        else
+          format.html { redirect_to todos_path }
+        #   redirect_to todos_path
         end
       end
     else
