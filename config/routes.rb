@@ -11,10 +11,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   post 'contacts/extract_business_card', to: 'contacts#extract_business_card'
+  post 'events/extract_event_info', to: 'events#extract_event_info'
   resources :dashboard, only: [:index]
   resources :contacts, except: [:destroy]
   resources :companies, except: [:destroy, :edit]
-  resources :events, only: [:index, :new, :create, :show]
+  resources :events, except: [:destroy, :show]
   resources :todos, only: [:index, :new, :create, :update]
   resources :notes, only: [:create]
   resources :event_contacts, only: [:create]
