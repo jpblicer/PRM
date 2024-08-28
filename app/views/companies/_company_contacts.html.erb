@@ -1,0 +1,15 @@
+<div class="contacts-card bg-white rounded-3 shadow-sm my-2 py-3 px-3 d-flex overflow-x-auto">
+  <% if @company.contacts.any?  %>
+    <% @company.contacts.each do |contact| %>
+      <%= link_to contact_path(contact) do %>
+        <div class="recent-contact me-3"> <!-- Added margin-end for spacing -->
+          <% if contact.avatar.attached? %>
+            <%= cl_image_tag(contact.avatar.key, alt: "contact-avatar", class: "avatar rounded-circle shadow-sm", style:"width: 5rem; height: 5rem; object-fit: cover;", transformation: {gravity: "faces" }) %>
+          <% else %>
+            <%= image_tag("contact-default-avatar.png", alt: "contact-avatar", class: "avatar rounded-circle shadow-sm", style:"width: 5rem; height: 5rem") %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
