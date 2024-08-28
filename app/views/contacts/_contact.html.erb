@@ -25,19 +25,19 @@
 
 <div class="icons-container flex-row justify-content-center mx-2">
 
-  <% if @contact.linkedin != "" %>
-    <%= link_to URI::HTTP.build(host: "#{@contact.linkedin}").to_s, target: "_blank" do %>
+  <% if @contact.linkedin.present? %>
+    <%= link_to URI::HTTP.build(host: @contact.linkedin).to_s, target: "_blank" do %>
       <i class="fa-brands fa-linkedin-in text-primary"></i>
     <% end %>
   <% end %>
 
-  <% if @contact.email != "" %>
+  <% if @contact.email.present? %>
     <%= mail_to @contact.email do %>
       <i class="fa-regular fa-envelope text-primary"></i>
     <% end %>
   <% end %>
 
-  <% if @contact.phone != "" %>
+  <% if @contact.phone.present? %>
     <%= phone_to @contact.phone do %>
       <i class="fa-solid fa-phone text-primary"></i>
     <% end %>

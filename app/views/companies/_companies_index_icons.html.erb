@@ -1,17 +1,17 @@
 <div class="icons-container flex-row justify-content-end">
-  <% if company.linkedin != "" %>
-    <%= link_to company.linkedin.to_s, target: "_blank" do %>
+  <% if company.linkedin.present? %>
+    <%= link_to URI::HTTP.build(host: company.linkedin).to_s, target: "_blank" do %>
       <i class="fa-brands fa-linkedin-in text-primary"></i>
     <% end %>
   <% end %>
 
-  <% if company.website != "" %>
+  <% if company.website.present? %>
     <%= link_to url_for(company.website), target: "_blank" do %>
       <i class="fa-solid fa-globe text-primary"></i>
     <% end %>
   <% end %>
 
-  <% if company.phone != "" %>
+  <% if company.phone.present? %>
     <%= phone_to company.phone do %>
       <i class="fa-solid fa-phone text-primary"></i>
     <% end %>
