@@ -8,7 +8,9 @@
 
 <div class="company-info text-center">
   <h2><%= @company.name if @company.name %></h2>
-  <h3><i class="fa-solid fa-location-pin"></i> <%= @company.address if @company.address %></h3>
+  <%= link_to "http://maps.google.com/?q=#{@company.address}" do %>
+    <h3><i class="fa-solid fa-location-pin"></i> <%= @company.address if @company.address %></h3>
+  <% end %>
 </div>
 
 <div class="icons-container flex-row justify-content-center mx-2">
