@@ -23,6 +23,7 @@ class EventsController < ApplicationController
     @event = Event.new
     @contact_collection = Contact.all
     @contact_names_collection = Contact.all.map { |contact| ["#{contact.first_name} #{contact.last_name}", contact.id] }
+    @page_title = 'New Event'
   end
 
   def create
