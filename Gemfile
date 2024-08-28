@@ -87,6 +87,10 @@ gem "faker"
 # Cloudinary
 gem "cloudinary"
 
+# Open AI
 gem 'openai'
 gem "ruby-openai"
+
+# PG Search
 gem 'pg_search'
+
