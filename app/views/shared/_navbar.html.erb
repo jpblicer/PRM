@@ -18,7 +18,7 @@
   <div class="navigation-item">
     <h2 data-navigation-target="title"><%= @page_title || '' %></h2>
   </div>
-  
+
   <div class="navigation-item">
     <a href="#" class="add-btn" data-action="click->navigation#toggleMenu">
       <i class="fa-solid fa-plus" data-navigation-target="icon"></i>
@@ -28,10 +28,10 @@
 
 <!-- Hidden Add Menu -->
 <ul class="add-menu" data-navigation-target="addMenu">
-  <div class="add-menu-item"><%= link_to 'New Contact', new_contact_path %></div>
-  <div class="add-menu-item"><%= link_to 'New Company', new_company_path %></div>
-  <div class="add-menu-item"><%= link_to 'New To Do', new_todo_path %></div>
-  <div class="add-menu-item"><%= link_to 'New Event', new_event_path %></div>
+  <div class="add-menu-item"><%= link_to 'Contact +', new_contact_path %></div>
+  <div class="add-menu-item"><%= link_to 'Company +', new_company_path %></div>
+  <div class="add-menu-item"><%= link_to 'To Do +', new_todo_path %></div>
+  <div class="add-menu-item"><%= link_to 'Event +', new_event_path %></div>
 </ul>
 
 <!-- Hidden Search Form -->
