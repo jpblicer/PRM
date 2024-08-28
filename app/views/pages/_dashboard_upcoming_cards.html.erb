@@ -1,49 +1,55 @@
 <div class="container">
   <ul class="list-group bg-white rounded-4 p-4" style="max-height: 40vh; overflow:scroll;">
     <% @sorted_records.each do |record| %>
-      <li class="list-item card py-2 my-2 rounded-4" style="background: #F5F5FA;">
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="card-left ps-4 d-flex">
-            <% if record.instance_of?(Event) %>
-              <%= link_to events_path, style: "font-size: 2rem; color: #5e81f4;", class: "card d-flex align-items-center justify-content-center px-4 me-2 bg-white rounded-4" do %>
-                <i class="fa-solid fa-calendar-day"></i>
-              <% end %>
-            <% else %>
-              <i style="font-size: 2rem; color: #7ce7ac" class="card d-flex align-items-center justify-content-center fa-solid fa-solid fa-clipboard-list px-4 me-2 bg-white rounded-4"></i>
-            <% end %>
-            <div class="card-left-content">
-              <h4><strong style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><%= record.name %></strong></h4>
-              <h5><%= record.class %></h5>
+      <% if record.instance_of?(Event) %>
+        <%= link_to events_path, class: "list-item card py-2 my-2 rounded-4 d-block text-decoration-none", style: "background: #F5F5FA;" do %>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="card-left ps-4 d-flex">
+              <div class="card-left-content">
+                <h4><strong style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><%= record.name %></strong></h4>
+                <h5><%= record.class %></h5>
+              </div>
             </div>
-          </div>
-          <div class="card-left pe-4">
-            <% if record.instance_of?(Event) %>
+            <div class="card-left pe-4">
               <div class="event-contacts-container d-flex flex-column">
                 <h4 class="border p-2 rounded-pill bg-white"><%= record.end_date %></h4>
-              <div class="event-right d-flex justify-content-end">
-                <ul class="d-flex">
-                  <% record.event_contacts.each do |contact| %>
-                    <li style="list-style-type: none;">
-                      <% if Contact.find(contact.contact_id).avatar.attached? %>
-                        <%= cl_image_tag(Contact.find(contact.contact_id).avatar.key, alt: "contact-avatar", class: "avatar rounded-circle border border-1 border-dark me-1", style:"width: 2rem; height: 2rem; object-fit: cover;", transformation: {gravity: "faces" }) %>
-                      <% else %>
-                        <%= image_tag("contact-default-avatar.png" , alt: "contact-avatar", class: "avatar rounded-circle border border-1 border-dark me-1", style:"width: 2rem; height: 2rem") %>
-                      <% end %>
-                    </li>
-                  <% end %>
-                </ul>
+                <div class="event-right d-flex justify-content-end">
+                  <ul class="d-flex">
+                    <% record.event_contacts.each do |contact| %>
+                      <li style="list-style-type: none;">
+                        <% if Contact.find(contact.contact_id).avatar.attached? %>
+                          <%= cl_image_tag(Contact.find(contact.contact_id).avatar.key, alt: "contact-avatar", class: "avatar rounded-circle border border-1 border-dark me-1", style:"width: 2rem; height: 2rem; object-fit: cover;", transformation: {gravity: "faces" }) %>
+                        <% else %>
+                          <%= image_tag("contact-default-avatar.png" , alt: "contact-avatar", class: "avatar rounded-circle border border-1 border-dark me-1", style:"width: 2rem; height: 2rem") %>
+                        <% end %>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
               </div>
-            <% else %>
+            </div>
+          </div>
+        <% end %> <!-- End of link_to block -->
+      <% else %>
+        <li class="list-item card py-2 my-2 rounded-4" style="background: #F5F5FA;">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="card-left ps-4 d-flex">
+              <div class="card-left-content">
+                <h4><strong style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><%= record.name %></strong></h4>
+                <h5><%= record.class %></h5>
+              </div>
+            </div>
+            <div class="card-left pe-4">
               <div class="checkbox-right-container d-flex flex-column">
                 <h4 class="border p-2 rounded-pill bg-white"><%= record.end_date %></h4>
                 <div class="checkbox-right d-flex justify-content-end pe-1 pt-1">
                   <input class="form-check-input-xl" type="checkbox" value="" id="flexCheckDefault">
                 </div>
               </div>
-            <% end %>
+            </div>
           </div>
-        </div>
-      </li>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 </div>
