@@ -9,4 +9,12 @@ class PagesController < ApplicationController
     @sorted_records = combined_records.sort_by { |record| record.end_date || Time.at(0) }
     @page_title = 'Dashboard'
   end
+
+  def search
+    # `perform_search` is called automatically due to the before_action in ApplicationController
+    respond_to do |format|
+      format.html # Renders the default search page
+      format.json { render 'pages/search', formats: :json }
+    end
+  end
 end
