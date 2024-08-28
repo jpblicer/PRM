@@ -13,14 +13,20 @@
 
 <div class="icons-container flex-row justify-content-center mx-2">
   <% if @company.linkedin != "" %>
-    <a href="<% @company.linkedin %>" target="_blank"><i class="fa-brands fa-linkedin-in text-primary"></i></a>
+    <%= link_to URI::HTTP.build(host: "#{@company.linkedin}").to_s, target: "_blank" do %>
+      <i class="fa-brands fa-linkedin-in text-primary"></i>
+    <% end %>
   <% end %>
 
   <% if @company.website != "" %>
-    <a href="<% @company.website %>"><i class="fa-solid fa-globe text-primary"></i></a>
+    <%= link_to @company.website, target: "_blank" do %>
+      <i class="fa-solid fa-globe text-primary"></i>
+    <% end %>
   <% end %>
 
   <% if @company.phone != "" %>
-    <a href="tel:<% @company.phone %>"><i class="fa-solid fa-phone text-primary"></i></a>
+    <%= phone_to @company.phone do %>
+      <i class="fa-solid fa-phone text-primary"></i>
+    <% end %>
   <% end %>
 </div>
