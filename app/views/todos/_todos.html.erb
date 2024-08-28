@@ -1,5 +1,5 @@
 <ul id="todos" class="list-group" style="list-style-type: none">
-  <% contact.todos.order(:end_date).each do |todo| %>
+  <% todos.order(:end_date).each do |todo| %>
     <li class="bg-white rounded-3 shadow-sm my-2 py-2 px-3">
       <p><strong>Due on: <%= todo.end_date.strftime("%d %b %Y") %></strong></p>
       <p data-controller="todo">
@@ -7,6 +7,6 @@
                data-todo-target="checkbox" data-action="change->todo#toggle">
         <span data-todo-target="text"><%= todo.name %></span>
       </p>
-    <li>
+    </li>
   <% end %>
 </ul>
