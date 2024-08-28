@@ -20,5 +20,6 @@ Rails.application.routes.draw do
   resources :notes, only: [:create]
   resources :event_contacts, only: [:create]
   get 'search', to: 'pages#search', as: :search
+  get 'notifications/count', to: 'notifications#count'
 
 end
