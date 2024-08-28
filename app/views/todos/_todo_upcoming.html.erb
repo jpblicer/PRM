@@ -21,7 +21,14 @@
     </div>
 
     <div class="card-left pe-2">
-      <h4 class="border p-3 rounded-pill bg-white m-0 align-self-center"><%= todo.end_date.strftime("%m/%d") %></h4>
+      <div class="checkbox-right-container d-flex flex-column">
+        <h4 class="border p-3 rounded-pill bg-white m-0 align-self-center"><%= todo.end_date.strftime("%m/%d") %></h4>
+        <div class="checkbox-right d-flex justify-content-end pe-1 pt-1">
+          <input class="form-check-input-xl" type="checkbox" value="" id="flexCheckDefault">
+        </div>
+      </div>
+
+
     </div>
   </div>
 </li>

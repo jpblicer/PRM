@@ -8,7 +8,7 @@
   </div>
 
   <div class="upcoming-list-container rounded-4 shadow " style="max-height: 70vh; overflow: auto;">
-    <ul class="list-group bg-white  rounded-4 p-4">
+    <ul class="list-group bg-white rounded-4 p-4">
       <% @todos.each do |todo| %>
         <% if todo.todoable_type == "Contact" %>
           <%= link_to contact_path(todo.todoable) do %>
