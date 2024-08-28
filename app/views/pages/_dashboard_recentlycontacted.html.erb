@@ -5,9 +5,9 @@
       <%= link_to contact_path(contact) do %>
         <div class="recent-contact d-flex flex-column align-items-center">
           <% if contact.avatar.attached? %>
-            <%= cl_image_tag(contact.avatar.key, alt: "contact-avatar", class: "avatar rounded-circle border border-1 border-dark shadow", style:"width: 8rem; height: 8rem; object-fit: cover;", transformation: {gravity: "faces" }) %>
+            <%= cl_image_tag(contact.avatar.key, alt: "contact-avatar", class: "avatar rounded-circle border border-1 shadow mb-2", style:"width: 8rem; height: 8rem; object-fit: cover;", transformation: {gravity: "faces" }) %>
           <% else %>
-            <%= image_tag("contact-default-avatar.png" , alt: "contact-avatar", class: "avatar rounded-circle border border-1 border-dark shadow", style:"width: 8rem; height: 8rem") %>
+            <%= image_tag("contact-default-avatar.png" , alt: "contact-avatar", class: "avatar rounded-circle border border-1 shadow mb-2", style:"width: 8rem; height: 8rem") %>
           <% end %>
           <div class="recent-contact-name-container pt-2">
             <h4><%= contact.first_name %> <%= contact.last_name %></h4>
