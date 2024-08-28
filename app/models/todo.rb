@@ -5,7 +5,7 @@ class Todo < ApplicationRecord
 
   validates :name, presence: true
   validates :end_date, presence: true
-  validates_comparison_of :end_date, greater_than: Date.today
+  validates_comparison_of :end_date, greater_than_or_equal_to: Date.today
 
   # scopes
   scope :pending, -> { where(status: ["in_progress", "not_started"]).where('end_date >= ?', Date.today) }
