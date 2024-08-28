@@ -1,7 +1,6 @@
 <li class="list-item card py-2  my-2 rounded-4" style="background: #F5F5FA;">
   <div class="d-flex justify-content-between align-items-center">
     <div class="card-left ps-2 d-flex">
-        <i style="font-size: 2rem; color: #7ce7ac; min-height: 4rem" class="card d-flex align-items-center justify-content-center fa-solid fa-clipboard-list px-4 me-2 bg-white rounded-4"></i>
       <div class="card-left-conten pl-2 align-self-center">
         <h4><strong><%= todo.name %></strong></h4>
 
@@ -21,7 +20,14 @@
     </div>
 
     <div class="card-left pe-2">
-      <h4 class="border p-3 rounded-pill bg-white m-0 align-self-center"><%= todo.end_date.strftime("%m/%d") %></h4>
+      <div class="checkbox-right-container d-flex flex-column">
+        <h4 class="border p-3 rounded-pill bg-white m-0 align-self-center"><%= todo.end_date.strftime("%m/%d") %></h4>
+        <div class="checkbox-right d-flex justify-content-end pe-1 pt-1">
+          <input class="form-check-input-xl" type="checkbox" value="" id="flexCheckDefault">
+        </div>
+      </div>
+
+
     </div>
   </div>
 </li>

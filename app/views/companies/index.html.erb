@@ -1,20 +1,21 @@
 <div class="container">
   <% @companies.each do |company| %>
-    <%= link_to company_path(company) do %>
-    <%# did not use card bootstrap class here because the card breaks the d-flex class %>
-      <div class="company-card-container bg-white rounded-3 shadow-sm my-2 py-2 px-2 d-flex justify-content-between align-items-center">
-        <div class="card-left d-flex align-items-center py-2">
-          <% if company.avatar.key.nil? %>
-              <%= image_tag("company-default-avatar.jpeg", alt:"company-avatar", style: "height: 6rem; width:6rem;", class: "rounded-4") %>
-          <% else %>
-            <%= cl_image_tag(company.avatar.key, transformation: { width: 640, height: 640, crop: "fill" }, alt:"company-avatar", style: "height: 6rem; width: 6rem;", class: "rounded-4") %>
-          <% end %>
-          <h2 class="ps-2"><%= company.name %></h2>
+    <div class="company-card bg-white rounded-3 shadow-sm my-2 py-3 d-flex justify-content-between">
+      <%= link_to company do %>
+        <div class="company-link-card bg-white d-flex align-items-center">
+          <div>
+            <% if company.avatar.attached? %>
+              <%= cl_image_tag(company.avatar.key, transformation: { width: 640, height: 640, crop: "fill" }, alt:"company-avatar", class: "avatar-small") %>
+            <% else %>
+              <%= image_tag("company-default-avatar.jpeg" , alt:"company-avatar", class: "avatar-small border") %>
+            <% end %>
+          </div>
+          <div class="company-details ps-2">
+            <h3><%= company.name %></h3>
+          </div>
         </div>
-        <div class="card-right">
-          <h2><%= render 'companies/companies_index_icons', company: company %></i></h2>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
+      <%= render 'companies/companies_index_icons', company: company %>
+    </div>
   <% end %>
 </div>

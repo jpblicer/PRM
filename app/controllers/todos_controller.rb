@@ -14,12 +14,12 @@ class TodosController < ApplicationController
     else
       Todo.all_todos.order(end_date: :asc)
     end
-    @page_title = "To Do's"
+    @page_title = "To Dos"
   end
 
   def new
-    @todo = Todo.new
     @page_title = 'New To Do'
+    @todo = Todo.new
   end
 
   def show

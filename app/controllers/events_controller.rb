@@ -2,6 +2,14 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.where('end_date >= ?', Date.today).order(start_date: :asc)
+    @events = case params[:filter]
+              when 'upcoming'
+                Event.where('end_date >= ?', Date.today).order(start_date: :asc)
+              when 'past'
+                Event.where('end_date <= ?', Date.today).order(start_date: :asc)
+              else
+                Event.all
+              end
     @page_title = 'Events'
   end
 
@@ -15,6 +23,7 @@ class EventsController < ApplicationController
     @event = Event.new
     @contact_collection = Contact.all
     @contact_names_collection = Contact.all.map { |contact| ["#{contact.first_name} #{contact.last_name}", contact.id] }
+    @page_title = 'New Event'
   end
 
   def create

@@ -1,10 +1,15 @@
 <div class="icons-container flex-row justify-content-center">
 
   <% if contact.email != "" %>
-    <a href="mailto:<% contact.email %>"><i class="fa-regular fa-envelope text-primary"></i></a>
+    <%= mail_to contact.email do %>
+      <i class="fa-regular fa-envelope text-primary"></i>
+    <% end %>
   <% end %>
 
   <% if contact.phone != "" %>
-    <a href="tel:<% contact.phone %>"><i class="fa-solid fa-phone text-primary"></i></a>
+    <%= phone_to contact.phone do %>
+      <i class="fa-solid fa-phone text-primary"></i>
+    <% end %>
   <% end %>
+
 </div>

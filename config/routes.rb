@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   resources :todos, only: [:index, :new, :create, :update]
   resources :notes, only: [:create]
   resources :event_contacts, only: [:create]
+  get 'search', to: 'pages#search', as: :search
 
 end

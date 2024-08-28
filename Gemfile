@@ -89,3 +89,4 @@ gem "cloudinary"
 
 gem 'openai'
 gem "ruby-openai"
+gem 'pg_search'

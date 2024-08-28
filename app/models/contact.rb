@@ -1,6 +1,9 @@
 require 'open-uri'
 
 class Contact < ApplicationRecord
+  include PgSearch::Model
+  multisearchable against: [:first_name, :last_name, :email, :phone]
+
   belongs_to :company, optional: true
   belongs_to :user
   has_many :todos, as: :todoable
