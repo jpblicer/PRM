@@ -1,10 +1,10 @@
 <%= simple_form_for EventContact.new, url: event_contacts_path do |f| %>
-  <%= f.input :contact_id, as: :hidden, input_html: { value: @contact.id } %>
+  <%= f.input :contact_id, as: :hidden, input_html: { value: @contact.id, class: "form-control form-control-lg fs-3 mt-3 mb-5" } %>
   <div class="form-group">
-    <%= f.input :event_id, collection: Event.all, prompt: "Choose an event" , label: false %>
+    <%= f.input :event_id, collection: Event.all, prompt: "Choose an event" , label: false, input_html: { class: "form-control form-control-lg fs-3 mt-3 mb-5" } %>
   </div>
 
   <div class="form-group">
-    <%= f.button :submit, "Add to Event", class: "btn btn-primary" %>
+    <%= f.button :submit, "Add to Event", class: 'btn btn-primary mt-2 btn-lg rounded-4 fs-4' %>
   </div>
 <% end %>

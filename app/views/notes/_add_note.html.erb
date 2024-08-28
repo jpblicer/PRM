@@ -1,6 +1,6 @@
 <%= simple_form_for @note, html: { data: { reset_form_target: 'form', action: "turbo:submit-end->reset-form#reset" } } do |f| %>
   <%= f.hidden_field :noteable_id, value: params["id"] %>
   <%= f.hidden_field :noteable_type, value: params["controller"].singularize.capitalize %>
-  <%= f.input :content %>
-  <%= f.submit 'Submit', class: 'btn btn-primary mt-2' %>
+  <%= f.input :content, input_html: { class: "form-control form-control-lg fs-3 mt-3 mb-5" }, label_html: { class: "fs-3" } %>
+  <%= f.submit 'Submit', class: 'btn btn-primary mt-2 btn-lg rounded-4 fs-4' %>
 <% end %>
