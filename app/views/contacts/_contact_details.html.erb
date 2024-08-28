@@ -6,14 +6,16 @@
 <% end %>
 
 <% if @contact.country.present? || @contact.address.present? %>
-  <div class='details'>
-    <i class="fa-solid fa-location-pin"></i>
-    <p>
-      <%= @contact.country if @contact.country.present? %>
-      <%= ", " if @contact.country.present? && @contact.address.present? %>
-      <%= @contact.address if @contact.address.present? %>
-    </p>
-  </div>
+  <%= link_to "http://maps.google.com/?q=#{@contact.country} #{@contact.address}" do %>
+    <div class='details'>
+      <i class="fa-solid fa-location-pin"></i>
+      <p>
+        <%= @contact.country if @contact.country.present? %>
+        <%= ", " if @contact.country.present? && @contact.address.present? %>
+        <%= @contact.address if @contact.address.present? %>
+      </p>
+    </div>
+  <% end %>
 <% end %>
 
 <% if @contact.birthday %>
