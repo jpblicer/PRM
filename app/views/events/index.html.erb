@@ -6,7 +6,9 @@
       <div class="event-details d-flex justify-content-between">
         <div class="event-name-address">
           <h2><strong><%= event.name %></strong></h2>
-          <h5><%= event.address %></h5>
+          <%= link_to "http://maps.google.com/?q=#{event.address}" do %>
+            <h5><%= event.address %></h5>
+          <% end %>
         </div>
         <div class="event-date">
           <h5><%= event.start_date %></h5>
