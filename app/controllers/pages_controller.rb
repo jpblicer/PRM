@@ -3,9 +3,9 @@ class PagesController < ApplicationController
 
   def home
     @recent_contacts = Contact.order(updated_at: :desc).first(3)
-    todos = Todo.all.where('end_date >= ?', Date.today)
-    events = Event.all.where('end_date >= ?', Date.today)
-    combined_records = todos.to_a + events.to_a
+    @todos = Todo.where(end_date: [Date.today, Date.tomorrow])
+    @events = Event.where(end_date: [Date.today, Date.tomorrow])
+    combined_records = @todos.to_a + @events.to_a
     @sorted_records = combined_records.sort_by { |record| record.end_date || Time.at(0) }
 
     @sorted_records = case params[:filter]

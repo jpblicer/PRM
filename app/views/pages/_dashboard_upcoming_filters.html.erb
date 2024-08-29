@@ -1,7 +1,15 @@
 <div class="container">
-  <div class="btn-group p-2 d-flex justify-content-between gap-3 my-3" role="group">
-    <%= link_to "All", root_path(filter: 'all'), class:"btn btn-outline-dark btn-lg rounded-3 dashboard-button-all w-100" %>
-    <%= link_to "Todos", root_path(filter: 'todos'), class:"btn btn-outline-primary btn-lg rounded-3 dashboard-button-todos w-100" %>
-    <%= link_to "Events", root_path(filter: 'events'), class:"btn btn-outline-warning btn-lg rounded-3 dashboard-button-events w-100" %>
+  <div class="btn-group p-2 d-flex justify-content-around my-3" role="group">
+
+    <div class="todo-card btn btn-outline-primary btn-lg rounded-3 dashboard-button-todos">
+      <h2><%= @todos.count %></h2>
+      <%= link_to "Todos", root_path(filter: 'todos') %>
+    </div>
+
+    <div class="event-card btn btn-outline-warning btn-lg rounded-3 dashboard-button-events">
+      <h2><%= @events.count %></h2>
+      <%= link_to "Events", root_path(filter: 'events') %>
+    </div>
+
   </div>
 </div>
