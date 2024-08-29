@@ -1,6 +1,5 @@
 <ul id="todos" class="list-group" style="list-style-type: none">
-  <% todos.order(:end_date).each do |todo| %>
-    <li class="bg-white rounded-3 shadow-sm p-2">
+    <li class="bg-white rounded-3 my-1 py-2 px-3">
       <div class="event-name-address">
       <div class="btn-group d-flex justify-content-between">
         <div><p class='fs-2 fw-bold'><%= todo.name %></p>
@@ -19,5 +18,4 @@
       </div>
       </div>
     </li>
-    <% end %>
   </ul>

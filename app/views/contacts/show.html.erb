@@ -1,20 +1,15 @@
-<div class="contact-container">
-  <%= render 'contacts/contact' %>
-</div>
-
-<div class='details-container bg-white rounded-3 shadow-sm mb-3'>
+<div class="container">
+  <div class="contact-container pb-1 gap-1">
+    <%= render 'contacts/contact' %>
+  </div>
   <div class="d-flex justify-content-end">
-    <%= link_to edit_contact_path(@contact) do %>
-      <i class="fa-regular fa-pen-to-square"></i>
-    <% end %>
+    <%= render 'contacts/toggle_arrow' %>
   </div>
-  <div>
-    <%= render 'contacts/contact_details' %>
-  </div>
+  <%= render 'contacts/contact_todos_notes' %>
 </div>
+<%# <div class="list-container"> %>
+<%# <div data-controller="reset-form">
 
-<div class="list-container">
-  <div data-controller="reset-form">
     <div class="d-flex justify-content-between align-items-center mt-3">
       <h3>Events</h3>
       <p>
@@ -26,56 +21,59 @@
     <div class="collapse" id="collapseAssign">
       <div class="card card-body bg-white rounded-4 shadow">
         <%= render 'contacts/assign_contact_form' %>
-      </div>
+<%# </div>
     </div>
     <div class="event-container rounded-4" style="max-height: 24vh; overflow: scroll;">
       <%= turbo_frame_tag :events_list do %>
+  <%# <%= render 'events/events', contact: @contact %>
+  <%# <% end %>
+  <%# </div>
+  </div>    %>
+  <%# <div class="list-container">
+    <div data-controller="reset-form">
+      <div class="d-flex justify-content-start align-items-center mt-3">
+        <h3>To Dos</h3>
+        <p>
+          <a class="btn btn-primary rounded-4 shadow" data-reset-form-target="btn" data-bs-toggle="collapse" href="#collapseTodo" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <i class="fa-solid fa-plus" data-navigation-target="icon"></i>
+          </a>
+        </p>
+      </div>
+      <div class="collapse" id="collapseTodo">
+        <div class="card card-body bg-white rounded-4 shadow">
+          <%= render 'todos/todo_form', todo: @todo %>
+  <%# </div> %>
+  <%# </div> %>
+  <%# <div class="todo-container rounded-4" style="max-height: 24vh; overflow: scroll;"> %>
+  <%#= turbo_frame_tag :todos_list do %>
+    <%# <%= render 'todos/todos', todos: @contact.todos %>
+    <%# <% end %>
+    <%# </div> %>
+    <%# </div>
+    <div data-controller="reset-form">
+      <div class="d-flex justify-content-start align-items-center mt-3">
+        <h3>Notes</h3>
+        <p>
+          <a class="btn btn-primary rounded-4 shadow" data-reset-form-target="btn" data-bs-toggle="collapse" href="#collapseNote" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <i class="fa-solid fa-plus" data-navigation-target="icon"></i>
+          </a>
+        </p>
         <%= render 'events/events', contact: @contact %>
       <% end %>
     </div>
 </div>
 
-
-<div class="list-container">
-  <div data-controller="reset-form">
-    <div class="d-flex justify-content-between align-items-center mt-3">
-      <h3>To Dos</h3>
-      <p>
-        <a class="btn btn-primary rounded-4 shadow" data-reset-form-target="btn" data-bs-toggle="collapse" href="#collapseTodo" role="button" aria-expanded="false" aria-controls="collapseExample">
-          <i class="fa-solid fa-plus" data-navigation-target="icon"></i>
-        </a>
-      </p>
-    </div>
-    <div class="collapse" id="collapseTodo">
-      <div class="card card-body bg-white rounded-4 shadow">
-        <%= render 'todos/todo_form', todo: @todo %>
       </div>
-    </div>
-    <div class="todo-container rounded-4" style="max-height: 24vh; overflow: scroll;">
-      <%= turbo_frame_tag :todos_list do %>
-        <%= render 'todos/todos', todos: @contact.todos %>
-      <% end %>
-    </div>
-  </div>
-
-  <div data-controller="reset-form">
-    <div class="d-flex justify-content-between align-items-center mt-3">
-      <h3>Notes</h3>
-      <p>
-        <a class="btn btn-primary rounded-4 shadow" data-reset-form-target="btn" data-bs-toggle="collapse" href="#collapseNote" role="button" aria-expanded="false" aria-controls="collapseExample">
-          <i class="fa-solid fa-plus" data-navigation-target="icon"></i>
-        </a>
-      </p>
-    </div>
-    <div class="collapse" id="collapseNote">
-      <div class="card card-body bg-white rounded-4 shadow">
-        <%= render 'notes/add_note' %>
-      </div>
-    </div>
-    <div class="notes-container rounded-4" style="max-height: 24vh; overflow: scroll;">
-      <%= turbo_frame_tag :notes_list do %>
-        <%= render 'notes/notes', contact: @contact %>
-      <% end %>
-    </div>
-  </div>
-</div>
+      <div class="collapse" id="collapseNote">
+        <div class="card card-body bg-white rounded-4 shadow">
+          <%= render 'notes/add_note' %>
+    <%# </div> %>
+    <%# </div> %>
+    <%# <div class="notes-container rounded-4" style="max-height: 24vh; overflow: scroll;"> %>
+    <%# <%= turbo_frame_tag :notes_list do %>
+      <%# <%= render 'notes/notes', contact: @contact %>
+      <%# <% end %>
+      <%# </div> %>
+      <%# </div> %>
+      <%# </div> %>
+      <%# </div> %>
