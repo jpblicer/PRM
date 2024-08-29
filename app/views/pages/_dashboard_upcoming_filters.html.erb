@@ -3,7 +3,7 @@
     <div class="btn-group justify-content-around mb-4" role="group">
       <div class="col-4">
         <%= link_to root_path(filter: 'todos') do %>
-          <div class="dashboard-button-todos btn btn-outline-primary rounded-3 w-100 py-2">
+          <div class="dashboard-button-todos btn shadow-sm rounded-4 w-100 py-2 bg-white">
             <h2><strong><%= @todos.count %></strong></h2>
            <i class="fa-regular fa-square-check link-dark" style="font-size: 3rem;"></i>
           </div>
@@ -11,7 +11,7 @@
       </div>
       <div class="col-4">
         <%= link_to root_path(filter: 'events') do %>
-          <div class="dashboard-button-events btn btn-outline-warning rounded-3 w-100 py-2">
+          <div class="dashboard-button-events btn shadow-sm rounded-4 w-100 py-2 bg-white">
             <h2><strong><%= @events.count %></strong></h2>
             <i class="fa-regular fa-calendar link-dark" style="font-size: 3rem;"></i>
           </div>
