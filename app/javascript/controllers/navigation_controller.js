@@ -31,9 +31,21 @@ export default class extends Controller {
     }
   }
 
+  // Handle the keyup event
+  handleKeyup(event) {
+    // const query = event.target.value;
+    // if (query.length > 2) { // Optional: only search if query is longer than 2 characters
+      // this.sends(); // Call send method without passing the event
+    // }
+    this.send(event);
+    // clearTimeout(this.timeout);
+    // this.timeout = setTimeout(() => {
+    //   this.sends(event);
+    // }, 300); // Wait for 300ms before sending the request
+  }
+
   send(event) {
     event.preventDefault();
-
     // Construct the URL with query parameters
     const url = new URL(this.formTarget.action);
     const params = new FormData(this.formTarget);
@@ -59,6 +71,8 @@ export default class extends Controller {
         this.searchResultsTarget.classList.add('show-results');
 
         const addButton = document.querySelector('.add-btn');
+
+
     if (this.searchFormTarget.style.display !== "none") {
         addButton.classList.add('disabled'); // Add a disabled class to style it as disabled
         addButton.setAttribute('aria-disabled', 'true'); // Add aria attribute for accessibility
