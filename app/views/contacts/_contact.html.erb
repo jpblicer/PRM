@@ -27,7 +27,9 @@
 
   <% if @contact.linkedin.present? %>
     <%#= link_to URI::HTTP.build(host: @contact.linkedin).to_s, target: "_blank" do %>
+    <a href="#">
       <i class="fa-brands fa-linkedin-in text-primary"></i>
+    </a>
     <%# end %>
   <% end %>
 
