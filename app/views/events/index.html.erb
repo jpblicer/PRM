@@ -6,9 +6,9 @@
       <div class="event-details d-flex justify-content-between">
         <div class="event-name-address">
           <h2><strong><%= event.name %></strong></h2>
-          <%= link_to "http://maps.google.com/?q=#{event.address}" do %>
-            <h5><%= event.address %></h5>
-          <% end %>
+          <%# remove %>
+
+          <%# remove %>
         </div>
         <div class="event-date">
           <h5><%= event.start_date %></h5>
@@ -35,11 +35,16 @@
                       <% if contact.avatar.attached? %>
                         <%= cl_image_tag(contact.avatar.key, alt: "contact-avatar", class: "avatar rounded-circle border border-1 border-dark shadow", style:"width: 3rem; height: 3rem; object-fit: cover;", transformation: {gravity: "faces" }) %>
                       <% else %>
-                        <%= image_tag("contact-default-avatar.png", alt: "contact-avatar", class: "avatar rounded-circle border border-1 border-dark shadow", style:"width: 3rem; height: 3rem") %>
+                        <%= image_tag("contact-default-avatar.png", alt: "contact-avatar", class: "avatar rounded-circle border border-1 border-dark shadow", style:"width: 3rem; height: 3rem; object-fit: cover;") %>
                       <% end %>
                     </div>
                   <% end %>
                 <% end %>
+              </div>
+              <div class="mt-4">
+              <%= link_to "http://maps.google.com/?q=#{event.address}" do %>
+                <h5><%= event.address %></h5>
+              <% end %>
               </div>
             </div>
           </div>
