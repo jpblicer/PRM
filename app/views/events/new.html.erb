@@ -1,18 +1,29 @@
-<div class="container">
+<div class="form-container bg-white p-4">
   <%= simple_form_for(@event) do |f| %>
+  <div class="mb-5">
 
-    <div class="mb-5">
-        <%= f.input :event_image, as: :file, label: 'Parse Event Poster/Image',label_html: { class: 'fs-3 mb-3'}, input_html: { class: 'form-control fs-4 pb-3', id: 'event_event_image' } %>
+    <h3 class="fs-1 mb-5 fw-bold">Event Info</h3>
+    <%= f.input :event_image, as: :file, label: 'Parse Event Poster/Image',label_html: { class: 'fs-3 mb-3 fw-bold'}, input_html: { class: 'form-control fs-4 pb-3', id: 'event_event_image' } %>
 
-        <%= f.submit 'Extract Data', class: 'btn btn-primary mt-2 btn-lg rounded-4 extract', id: 'extract-event-data-btn' %>
-      </div>
+    <%= f.submit 'Extract Data', class: 'btn btn-primary mt-2 btn-lg rounded-4 extract', id: 'extract-event-data-btn' %>
+  </div>
 
-    <%= f.input :name %>
-    <%= f.input :address %>
-    <%= f.input :start_date, label: 'Start Date', as: :date, html5: true, input_html: {min: Date.today + 1} %>
-    <%= f.input :end_date, label: 'End Date', as: :date, html5: true, input_html: {min: Date.today + 1} %>
-    <%= f.association :company, input_html: {data: {controller: "tom-select", tom_select_options_value: {tags: true}}} %>
-    <%= f.association :contacts, collection: @contact_names_collection, input_html: {multiple: true, data: {controller: "tom-select", tom_select_options_value: {tags: true}}} %>
-    <%= f.submit 'Submit', class: 'btn btn-primary mt-2' %>
+  <div class="mb-5">
+    <%= f.label :name, class: 'fs-3' %>
+    <%= f.input_field :name, label: false, class: "form-control form-control-lg fs-3" %>
+  </div>
+  <div class="mb-5">
+    <%= f.label :address, class: 'fs-3' %>
+    <%= f.input_field :address, label: false, class: "form-control form-control-lg fs-3" %>
+  </div>
+
+  <div class="mb-5">
+    <%= f.input :start_date, label: 'Start Date', as: :date, html5: true, input_html: {min: Date.today + 1, class: "form-control form-control-lg fs-6 pb-3 fs-3"}, label_html: { class: "fs-3" }%>
+    <%= f.input :end_date, label: 'End Date', as: :date, html5: true, input_html: {min: Date.today + 1, class: "form-control form-control-lg fs-6 pb-3 fs-3"}, label_html: { class: "fs-3" } %>
+  </div>
+
+    <%= f.association :company, input_html: {data: {controller: "tom-select", tom_select_options_value: {tags: true}}}, label_html: { class: "fs-3" } %>
+    <%= f.association :contacts, collection: @contact_names_collection, input_html: {multiple: true, data: {controller: "tom-select", tom_select_options_value: {tags: true}}}, label_html: { class: "fs-3" } %>
+    <%= f.submit 'Submit', class: 'btn btn-primary mt-4 btn-lg rounded-4 fs-4' %>
   <% end %>
 </div>

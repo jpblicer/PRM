@@ -10,7 +10,7 @@
 
   <%= link_to root_path, class: "bottom-navigation-item" do %>
     <i class="fa-solid fa-house link-dark position-relative">
-    <% if current_user %>
+    <% if current_user && current_user.notification_count > 0 %>
       <span data-controller="notification" data-notification-target="count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger fs-6 <%= 'd-none' if current_user.notification_count == 0 %>">
         <%= current_user.notification_count %>
         <span class="visually-hidden">unread messages</span>

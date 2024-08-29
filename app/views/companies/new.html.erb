@@ -1,7 +1,7 @@
 <%= simple_form_for(@company) do |f| %>
 
-  <div class="form-container bg-white">
-    <h3 class="fs-1 mb-4">Company Info</h3>
+  <div class="form-container bg-white p-4">
+    <h3 class="fs-1 mb-4 fw-bold">Company Info</h3>
       <div class="mb-3 fs-6">
         <%= f.label :name, class: 'fs-3' %>
         <%= f.input_field :name, label: false, class: "form-control form-control-lg fs-3", id: "floatingInput" %>
@@ -10,7 +10,7 @@
 
   <div class="form-container bg-white">
     <div class="d-flex justify-content-between align-items-center mt-3">
-      <h3 class="fs-1 mb-4">Additional Info</h3>
+      <h3 class="fs-1 mb-4 fw-bold">Additional Info</h3>
       <p>
         <a class="btn btn-primary  rounded-4" data-reset-form-target="btn" data-bs-toggle="collapse" href="#collapseCompanyDetails" role="button" aria-expanded="false" aria-controls="collapseExample">
           <i class="fa-solid fa-chevron-down" data-navigation-target="icon"></i>
@@ -34,8 +34,7 @@
         <%= f.label :address, class: 'fs-3' %>
         <%= f.input_field :address, label: false, class: "form-control form-control-lg fs-3", id: "floatingInput" %>
       </div>
-
-      <%= f.submit 'Submit', class: 'btn btn-primary mt-2 btn-lg rounded-4 fs-4' %>
-      <% end %>
     </div>
   </div>
+<%= f.submit 'Submit', class: 'btn btn-primary mt-4 btn-lg rounded-4 fs-4' %>
+<% end %>
