@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :contacts, except: [:destroy]
   resources :companies, except: [:destroy, :edit]
   resources :events, except: [:destroy, :show]
-  resources :todos, only: [:index, :new, :create, :update]
+  resources :todos, only: [:index, :new, :create, :update, :submit]
   resources :notes, only: [:create]
   resources :event_contacts, only: [:create]
   get 'search', to: 'pages#search', as: :search
