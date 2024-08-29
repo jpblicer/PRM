@@ -1,8 +1,8 @@
 <div class="icons-container flex-row justify-content-end">
   <% if company.linkedin.present? %>
-    <%= link_to URI::HTTP.build(host: company.linkedin).to_s, target: "_blank" do %>
+    <%#= link_to URI::HTTP.build(host: company.linkedin).to_s, target: "_blank" do %>
       <i class="fa-brands fa-linkedin-in text-primary"></i>
-    <% end %>
+    <%# end %>
   <% end %>
 
   <% if company.website.present? %>
