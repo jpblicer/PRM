@@ -32,7 +32,7 @@ class TodosController < ApplicationController
     if @todo.save
       # redirect_to @todo
       respond_to do |format|
-        if @todo.todoable.present?
+        if @todo.company.present? || @todo.contact.present?
           format.turbo_stream do
             render turbo_stream: turbo_stream.replace(
               :todos,
@@ -52,7 +52,6 @@ class TodosController < ApplicationController
   end
 
   def update
-
     @todo = Todo.find(params[:id])
     @todo.update(todo_params)
     respond_to do |format|
