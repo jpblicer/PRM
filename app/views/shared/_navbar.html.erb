@@ -8,7 +8,7 @@
         <div class="form-group">
           <%= text_field_tag :query, params[:query], placeholder: "Search", class: 'form-control mr-sm-2', data: { target: "navigation.form", action: "keyup->navigation#handleKeyup" } %>
         </div>
-       <%= submit_tag 'Search', class: 'btn btn-outline-success my-2 my-sm-0' %>
+       <%= submit_tag 'Search', class: 'btn btn-outline-success my-2 my-sm-0 d-none' %>
       <% end %>
     </div>
   </div>
