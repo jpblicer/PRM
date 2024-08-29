@@ -1,6 +1,7 @@
   <!-- Hidden Search Results -->
-    <% if @results %>
+
       <ul class="search-results" id='search' data-navigation-target="searchResults">
+    <% if @results %>
         <h1>Search Results</h1>
         <% @results.each do |result| %>
           <% if result.searchable.is_a?(Contact) %>
@@ -9,9 +10,9 @@
             <div class="search-result-item"><%= link_to result.searchable.name, company_path(result.searchable) %></div>
           <% end %>
         <% end %>
-      </ul>
     <% else %>
       <p>No results found.</p>
     <% end %>
+      </ul>
 
     <!-- app/views/shared/_search_results.html.erb -->

@@ -6,7 +6,7 @@
     <div data-navigation-target="searchForm" class="search-form" style="display: none;">
       <%= form_with url: search_path, method: :get, local: true, class: 'form-inline my-2 my-lg-0', data: { target: "navigation.form", action: "submit->navigation#send" } do %>
         <div class="form-group">
-          <%= text_field_tag :query, params[:query], placeholder: "Search", class: 'form-control mr-sm-2' %>
+          <%= text_field_tag :query, params[:query], placeholder: "Search", class: 'form-control mr-sm-2', data: { target: "navigation.form", action: "keyup->navigation#handleKeyup" } %>
         </div>
        <%= submit_tag 'Search', class: 'btn btn-outline-success my-2 my-sm-0' %>
       <% end %>

@@ -1,6 +1,8 @@
 class Company < ApplicationRecord
   include PgSearch::Model
   multisearchable against: [:name, :phone]
+
+
   belongs_to :user
   has_many :contacts
   has_many :events
