@@ -1,15 +1,12 @@
 <div class="container">
-  <div class="btn-group p-2 d-flex justify-content-around my-3" role="group">
-
-    <div class="todo-card btn btn-outline-primary btn-lg rounded-3 dashboard-button-todos">
+  <div class="btn-group p-2 d-flex justify-content-around mb-3 gap-4" role="group">
+    <div class=" dashboard-button-todos btn btn-outline-primary rounded-3">
       <h2><%= @todos.count %></h2>
       <%= link_to "Todos", root_path(filter: 'todos') %>
     </div>
-
-    <div class="event-card btn btn-outline-warning btn-lg rounded-3 dashboard-button-events">
+    <div class="dashboard-button-events btn btn-outline-warning rounded-3">
       <h2><%= @events.count %></h2>
       <%= link_to "Events", root_path(filter: 'events') %>
     </div>
-
   </div>
 </div>
