@@ -1,0 +1,20 @@
+<h2 data-controller="toggle-arrow">
+  <a class="d-flex flex-column align-items-center" data-bs-toggle="collapse" href="#collapseEvent<%= @contact.id %>" role="button" aria-expanded="false" aria-controls="collapseEvent<%= @contact.id %>" data-action="click->toggle-arrow#toggle">
+    <i class="fa-solid fa-chevron-down" data-toggle-arrow-target="icon"></i>
+  </a>
+</h2>
+</div>
+<div class="collapse mt-2 bg-white rounded-3 shadow-sm mb-3" id="collapseEvent<%= @contact.id %>">
+  <div>
+    <div class="d-flex justify-content-end">
+      <%= link_to edit_contact_path(@contact) do %>
+        <i class="fa-regular fa-pen-to-square"></i>
+      <% end %>
+    </div>
+    <div>
+      <%= render 'contacts/contact_details' %>
+    </div>
+  </div>
+  <div class="expand d-flex justify-content-center mt-3"> <!-- Added mt-3 for spacing -->
+  </div>
+</div>
