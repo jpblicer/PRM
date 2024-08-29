@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
+  before_action :set_default_filter
+
 
   def home
     @recent_contacts = Contact.order(updated_at: :desc).first(3)
@@ -26,4 +28,9 @@ class PagesController < ApplicationController
       format.json { render 'pages/search', formats: :json }
     end
   end
+
+  def set_default_filter
+    params[:filter] ||= "todos"
+  end
+
 end

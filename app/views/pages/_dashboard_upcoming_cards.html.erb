@@ -1,11 +1,10 @@
 <div class="container">
   <div class="upcoming-container" style="max-height: 40vh; overflow:scroll;">
-    <% @sorted_records.each do |record| %>
-      <% if record.instance_of?(Event) %>
-        <%= render 'events/events', events: @events %>
-      <% else %>
+      <div class="<%= "d-none" unless params[:filter] == "events" %>">
+        <%= render @events %>
+      </div>
+      <div class="<%= "d-none" unless params[:filter] == "todos" %>">
         <%= render @todos %>
-      <% end %>
-    <% end %>
+      </div>
   </div>
 </div>
