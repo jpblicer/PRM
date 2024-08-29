@@ -11,6 +11,7 @@ class ContactsController < ApplicationController
     @page_title = 'Contact Details'
     @event = Event.new
     @events = Event.where(id: @contact.events.pluck(:id))
+    @todos = @contact.todos
   end
 
   def new
