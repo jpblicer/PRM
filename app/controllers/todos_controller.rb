@@ -1,6 +1,6 @@
 class TodosController < ApplicationController
   def index
-    @filter = params[:filter]
+    @filter = params[:filter] || 'pending'
     # @todos = Todo.all
     @todos = case params[:filter]
     when 'pending'
