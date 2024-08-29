@@ -57,7 +57,7 @@ contacts = 10.times.map do
     user: user,
     email: Faker::Internet.unique.email,
     country: Faker::Address.country,
-    avatar: Faker::LoremFlickr.unique.image
+    # avatar: Faker::LoremFlickr.unique.image
   )
 end
 
