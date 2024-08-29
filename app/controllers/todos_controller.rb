@@ -1,19 +1,18 @@
 class TodosController < ApplicationController
   def index
     @filter = params[:filter] || 'pending'
-    # @todos = Todo.all
     @todos = case params[:filter]
-    when 'pending'
-      Todo.pending.order(end_date: :asc)
-    when 'overdue'
-      Todo.overdue.order(end_date: :asc)
-    when 'completed'
-      Todo.completed.order(end_date: :asc)
-    when 'all_todos'
-      Todo.all_todos.order(end_date: :asc)
-    else
-      Todo.all_todos.order(end_date: :asc)
-    end
+             when 'pending'
+               Todo.pending.order(end_date: :asc)
+             when 'overdue'
+               Todo.overdue.order(end_date: :asc)
+             when 'completed'
+               Todo.completed.order(end_date: :asc)
+             when 'all_todos'
+               Todo.all_todos.order(end_date: :asc)
+             else
+               Todo.all_todos.order(end_date: :asc)
+             end
     @page_title = "To Dos"
   end
 
