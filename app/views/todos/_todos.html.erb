@@ -1,23 +1,22 @@
 <ul id="todos" class="list-group" style="list-style-type: none">
   <% todos.order(:end_date).each do |todo| %>
-    <li class="bg-white rounded-3 shadow-sm p-2">
-      <div class="event-name-address">
-      <div class="btn-group d-flex justify-content-between">
-        <div><p class='fs-2 fw-bold'><%= todo.name %></p>
-        <%= simple_form_for(todo, html: {"data-controller": "todo"}) do |f| %>
-          <%=
-            f.input :status,
-            label: false,
-            as: :select,
-            input_html: {"data-action": "change->todo#submit", class: 'fs-5'},
-            collection: {"Not Started": :not_started, "In Progress": :in_progress, "Done": :done, "Archived": :archived}
-          %>
-        <% end %></div>
-      <div class="event-date">
-        <h5><%= todo.end_date %></h5>
-        <h5><%= todo.end_date %></h5></p></div>
-      </div>
-      </div>
-    </li>
+    <div class='d-flex justify-content-between align-items-center mb-3 shadow-sm p-4 rounded-1 bg-white'>
+<div>
+  <h2 class='fw-bold'><%= todo.name %></h2>
+      <div class='d-flex flex-column'>
+          <% if todo.todoable_type == "Contact" %>
+            <h5>Contact:
+              <%= todo.todoable.first_name if todo.todoable.first_name != nil %>
+              <%= todo.todoable.last_name if todo.todoable.last_name != nil %>
+            </h5>
+          <% end %>
+          <% if todo.todoable_type == "Company" %>
+            <h5>Company: <%= todo.todoable.name if todo.todoable.name != nil %></h5>
+          <% end %>
+        </div>
+</div>
+<p class='fs-3'><%= todo.end_date.strftime("%m/%d") %></p>
+</div>
+
     <% end %>
   </ul>
