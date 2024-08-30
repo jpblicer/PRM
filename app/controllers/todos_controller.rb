@@ -55,6 +55,15 @@ class TodosController < ApplicationController
   def update
     @todo = Todo.find(params[:id])
     @todo.update(todo_params)
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(
+          :todos,
+          partial: "todos/todos",
+          locals: { todos: @todo.todoable&.todos }
+        )
+      end
+    end
   end
 
   private
