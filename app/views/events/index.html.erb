@@ -1,5 +1,62 @@
 <%= render 'event_filters' %>
 
 <ul class="list-group">
-  <%= render @events %>
+  <% @events.each do |event| %>
+    <div class="bg-white rounded-3 shadow-sm my-2 py-2 px-3 d-flex flex-column">
+      <div class="event-details d-flex justify-content-between">
+        <div class="event-name-address">
+          <h2><strong><%= event.name %></strong></h2>
+          <%# remove %>
+
+          <%# remove %>
+        </div>
+        <div class="event-date">
+          <h5><%= event.start_date %></h5>
+          <h5><%= event.end_date %></h5>
+        </div>
+      </div>
+      <% if event.contacts.any? %>
+        <div class="collapse mt-2" id="collapseEvent<%= event.id %>">
+          <div class="d-flex flex-wrap"> <!-- Flex container for avatars -->
+            <div class="event-attendees-container d-flex flex-column">
+              <div class="event-attendees-company mb-2">
+                <% if event.company %>
+                  <% if event.company.avatar.key.nil? %>
+                    <%= image_tag("company-default-avatar.jpeg", alt: "company-avatar", class: "avatar rounded-circle border border-1 border-dark shadow me-3", style:"width: 3rem; height: 3rem") %>
+                  <% else %>
+                    <%= cl_image_tag(event.company.avatar.key, alt: "company-avatar", class: "avatar rounded-circle border border-1 border-dark shadow me-3", style:"width: 3rem; height: 3rem; object-fit: cover;", transformation: {gravity: "faces" }) %>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="d-flex event-attendees-contacts">
+                <% event.contacts.each do |contact| %>
+                  <%= link_to contact_path(contact) do %>
+                    <div class="recent-contact me-3"> <!-- Added margin-end for spacing -->
+                      <% if contact.avatar.attached? %>
+                        <%= cl_image_tag(contact.avatar.key, alt: "contact-avatar", class: "avatar rounded-circle border border-1 border-dark shadow", style:"width: 3rem; height: 3rem; object-fit: cover;", transformation: {gravity: "faces" }) %>
+                      <% else %>
+                        <%= image_tag("contact-default-avatar.png", alt: "contact-avatar", class: "avatar rounded-circle border border-1 border-dark shadow", style:"width: 3rem; height: 3rem; object-fit: cover;") %>
+                      <% end %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="mt-4">
+              <%= link_to "http://maps.google.com/?q=#{event.address}" do %>
+                <h5><%= event.address %></h5>
+              <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="expand d-flex justify-content-center mt-3">
+          <h2 data-controller="toggle-arrow">
+            <a data-bs-toggle="collapse" href="#collapseEvent<%= event.id %>" role="button" aria-expanded="false" aria-controls="collapseEvent<%= event.id %>" data-action="click->toggle-arrow#toggle">
+              <i class="fa-solid fa-chevron-down" data-toggle-arrow-target="icon"></i>
+            </a>
+          </h2>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </ul>
