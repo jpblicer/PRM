@@ -4,7 +4,7 @@
       <% if record.instance_of?(Event) %>
         <%= render 'events/events', events: @events %>
       <% else %>
-        <%= render @todos %>
+        <%= render 'todos/todos', todos: @todos %>
       <% end %>
     <% end %>
   </div>
