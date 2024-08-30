@@ -8,8 +8,8 @@
         <%# Logic to display username and/or company name %>
         <% if todo.todoable_type == "Contact" %>
           <h5>Contact:
-            <%= todo.todoable.first_name if todo.todoable.first_name != nil %>
-            <%= todo.todoable.last_name if todo.todoable.last_name != nil %>
+            <%= todo.todoable.first_name if todo.todoable&.first_name %>
+            <%= todo.todoable.last_name if todo.todoable&.last_name %>
           </h5>
         <% end %>
         <% if todo.todoable_type == "Company" %>

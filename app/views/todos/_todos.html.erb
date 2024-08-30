@@ -1,6 +1,5 @@
 <ul id="todos" class="list-group" style="list-style-type: none">
-  <% todos.order(:end_date).each do |todo| %>
-    <% if todo.status.in?(['not_started','in_progress','done']) %>
+  <% todos.where(status: ['not_started','in_progress','done']).order(:end_date).each do |todo| %>
       <li class="bg-white rounded-3 shadow-sm p-2">
         <div class="event-name-address">
         <div class="btn-group d-flex justify-content-between">
@@ -20,6 +19,5 @@
         </div>
         </div>
       </li>
-    <% end %>
   <% end %>
 </ul>
