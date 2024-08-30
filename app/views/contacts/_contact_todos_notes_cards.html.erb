@@ -1,5 +1,16 @@
 <div class="container">
   <div class="upcoming-container" style="max-height: 40vh; overflow:scroll;">
-    <%= render @sorted_records %>
+    <% @sorted_records.each do |record| %>
+      <% if record.instance_of?(Note) %>
+        <%= render 'notes/notes', note: record %>
+</ul>
+
+
+
+
+      <% else %>
+        <%= render 'todos/todos', todo: record %>
+      <% end %>
+    <% end %>
   </div>
 </div>

@@ -1,18 +1,19 @@
 class TodosController < ApplicationController
   def index
     @filter = params[:filter] || 'pending'
+    # @todos = Todo.all
     @todos = case params[:filter]
-             when 'pending'
-               Todo.pending.order(end_date: :asc)
-             when 'overdue'
-               Todo.overdue.order(end_date: :asc)
-             when 'completed'
-               Todo.completed.order(end_date: :asc)
-             when 'all_todos'
-               Todo.all_todos.order(end_date: :asc)
-             else
-               Todo.all_todos.order(end_date: :asc)
-             end
+    when 'pending'
+      Todo.pending.order(end_date: :asc)
+    when 'overdue'
+      Todo.overdue.order(end_date: :asc)
+    when 'completed'
+      Todo.completed.order(end_date: :asc)
+    when 'all_todos'
+      Todo.all_todos.order(end_date: :asc)
+    else
+      Todo.all_todos.order(end_date: :asc)
+    end
     @page_title = "To Dos"
   end
 
@@ -32,12 +33,12 @@ class TodosController < ApplicationController
     if @todo.save
       # redirect_to @todo
       respond_to do |format|
-        if @todo.company.present? || @todo.contact.present?
+        if @todo.todoable.present?
           format.turbo_stream do
             render turbo_stream: turbo_stream.replace(
               :todos,
-              partial: "todos/todo",
-              locals: { todo: @todo }
+              partial: "todos/todos",
+              locals: { todos: @todo.todoable.todos }
             )
           end
         else
@@ -52,6 +53,7 @@ class TodosController < ApplicationController
   end
 
   def update
+
     @todo = Todo.find(params[:id])
     @todo.update(todo_params)
     respond_to do |format|
@@ -59,8 +61,8 @@ class TodosController < ApplicationController
       format.turbo_stream do
         render turbo_stream: turbo_stream.replace(
           :todos,
-          partial: "todos/todo",
-          locals: { todo: @todo }
+          partial: "todos/todos",
+          locals: { todos: @todo.todoable.todos }
         )
       end
     end
