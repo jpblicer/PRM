@@ -11,19 +11,6 @@ class ContactsController < ApplicationController
     @page_title = 'Contact Details'
     @event = Event.new
     @events = Event.where(id: @contact.events.pluck(:id))
-    @notes = @contact.notes
-    @todos = @contact.todos
-
-    @sorted_records = @contact.notes
-
-    @sorted_records = case params[:filter]
-                      when 'notes'
-                        @notes
-                      when 'todos'
-                        @todos
-                      else
-                        @sorted_records
-                      end
   end
 
   def new

@@ -1,14 +1,14 @@
 <% if @contact.company %>
-  <div class='details d-flex'>
-    <i class="fa-regular fa-building m-2"></i>
+  <div class='details'>
+    <i class="fa-regular fa-building"></i>
     <p><%= @contact.company.name %></p>
   </div>
 <% end %>
 
 <% if @contact.country.present? || @contact.address.present? %>
   <%= link_to "http://maps.google.com/?q=#{@contact.country} #{@contact.address}" do %>
-    <div class='details d-flex'>
-      <i class="fa-solid fa-location-pin m-2"></i>
+    <div class='details'>
+      <i class="fa-solid fa-location-pin"></i>
       <p>
         <%= @contact.country if @contact.country.present? %>
         <%= ", " if @contact.country.present? && @contact.address.present? %>
@@ -19,22 +19,22 @@
 <% end %>
 
 <% if @contact.birthday %>
-  <div class='details d-flex'>
-    <i class="fa-solid fa-cake-candles m-2"></i>
+  <div class='details'>
+    <i class="fa-solid fa-cake-candles"></i>
     <p><%= @contact.birthday %></p>
   </div>
 <% end %>
 
 <% if @contact.phone %>
-  <div class='details d-flex'>
-    <i class="fa-solid fa-phone m-2"></i>
+  <div class='details'>
+    <i class="fa-solid fa-phone"></i>
     <p><%= @contact.phone %></p>
   </div>
 <% end %>
 
 <% if @contact.email %>
-  <div class='details d-flex'>
-    <i class="fa-regular fa-envelope m-2"></i>
+  <div class='details'>
+    <i class="fa-regular fa-envelope"></i>
     <p><%= @contact.email %></p>
   </div>
 <% end %>

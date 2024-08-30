@@ -10,7 +10,7 @@
   <h2><%= @contact.first_name if @contact.first_name %> <%= @contact.last_name if @contact.last_name %></h2>
   <% if @contact.company %>
     <%= link_to company_path(@contact.company) do %>
-      <div class="contact-company-container d-flex justify-content-center align-items-center gap-1">
+      <div class="contact-company-container d-flex align-items-center gap-1">
         <% if @contact.company.avatar.key.nil? %>
           <%= image_tag("company-default-avatar.jpeg", alt:"company-avatar", style: "height: 3rem; width:3rem;", class: "rounded-circle") %>
             <% else %>
@@ -27,9 +27,7 @@
 
   <% if @contact.linkedin.present? %>
     <%#= link_to URI::HTTP.build(host: @contact.linkedin).to_s, target: "_blank" do %>
-    <a href="#">
       <i class="fa-brands fa-linkedin-in text-primary"></i>
-    </a>
     <%# end %>
   <% end %>
 
