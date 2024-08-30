@@ -13,7 +13,10 @@
       </div>
       <% if event.contacts.any? %>
         <div class="collapse mt-2" id="collapseEvent<%= event.id %>">
-          <div class="d-flex flex-wrap"> <!-- Flex container for avatars -->
+          <div class="d-flex justify-content-between pt-2"> <!-- Flex container for avatars -->
+              <%= link_to "http://maps.google.com/?q=#{event.address}" do %>
+                <h5><%= event.address %></h5>
+              <% end %>
             <div class="event-attendees-container d-flex flex-column">
               <div class="event-attendees-company mb-2">
                 <% if event.company %>
@@ -37,11 +40,9 @@
                   <% end %>
                 <% end %>
               </div>
-              <div class="mt-4">
-              <%= link_to "http://maps.google.com/?q=#{event.address}" do %>
-                <h5><%= event.address %></h5>
-              <% end %>
-              </div>
+
+
+
             </div>
           </div>
         </div>
