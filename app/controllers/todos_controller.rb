@@ -60,7 +60,7 @@ class TodosController < ApplicationController
         render turbo_stream: turbo_stream.replace(
           :todos,
           partial: "todos/todos",
-          locals: { todos: @todo.todoable.todos }
+          locals: { todos: @todo.todoable&.todos }
         )
       end
     end
