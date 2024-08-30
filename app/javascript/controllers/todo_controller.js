@@ -4,6 +4,6 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   submit() {
     // this.element.submit()
-    // Turbo.navigator.submitForm(this.element)
+    Turbo.navigator.submitForm(this.element)
   }
 }
