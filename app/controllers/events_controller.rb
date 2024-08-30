@@ -80,7 +80,6 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
-    @contact_names_collection = Contact.all.map { |contact| ["#{contact.first_name} #{contact.last_name}", contact.id] }
     @page_title = 'Confirm Event'
   end
 
