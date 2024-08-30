@@ -9,8 +9,9 @@
           <% else %>
             <%= image_tag("contact-default-avatar.png" , alt: "contact-avatar", class: "avatar rounded-circle border border-1 shadow mb-2", style:"width: 8rem; height: 8rem") %>
           <% end %>
-          <div class="recent-contact-name-container pt-2">
-            <h4 class="text-center"><%= contact.first_name %> <%= contact.last_name %></h4>
+          <div class="recent-contact-name-container pt-2 mb-2 mt-1">
+            <h4 class="text-center"><%= contact.first_name %></h4>
+            <h4 class="text-center"><%= contact.last_name %></h4>
           </div>
         </div>
       <% end %>
